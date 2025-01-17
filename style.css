@@ -1,0 +1,23 @@
+body {
+    font-family: Tahoma;
+    color: #fc2;
+    background-color: #996e74;
+}
+
+/*Les images*/
+img.carte {
+    height: 60px;
+    border-radius: 3px;
+}
+
+
+a {
+    color: #fa4;
+    text-decoration: none;
+}
+
+/* création des bordures entre le container et le reste :*/
+#container {
+    border-top: 3px #fc2 solid;
+    border-bottom: 3px #fc2 solid;
+}
