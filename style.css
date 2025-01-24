@@ -1,13 +1,14 @@
 body {
-    font-family: Tahoma;
-    color: #fc2;
-    background-color: #996e74;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #993838;
+    background-color: #ffbcbc;
 }
 
 /*Les images*/
 img.carte {
     height: 60px;
-    border-radius: 3px;
+    border-radius: 5px;
+    padding: 2px;
 }
 
 
