@@ -11,10 +11,14 @@ include_once('header.php'); ?>
     shuffle($cartes);
     afficherCartes($cartes);
     // Appeler la fonction pour distribuer 7 cartes à 2 joueurs
-    $mainJoueur = distribuerCartes($cartes);
+    $mainJoueur = distribuerCartes($cartes);?>
+    <h3>main du joueur</h3>
+    Elles étaient là mais on le les voyaient pas 
+    car il n'y avait pas de séparation avec les cartes du deck, juste au-dessus. <br>
+    <?php  
     afficherCartes($mainJoueur);
-    print_r($mainJoueur);
     ?>
+    
 </div>
 
 <!-- inclusion du bas de page du site -->
