@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/jpg" href="cartes/uno.png" /> <!-- icone en haut page, obli extension png-->
 </head>
+<br>
 
 <body>
     <nav>
-        Ceci sera un jour le menu du site..... peut-être pas.
+        Ceci sera un jour le menu du site..... peu de chances.
     </nav>

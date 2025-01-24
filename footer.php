@@ -1,4 +1,5 @@
 <!-- footer.php -->
+<br>
 <footer>
-    &copy; 2025: Cours 5TTc Khalima et Mme PIRON
+    <p> &copy; 2025: Cours 5TT <span style="font-size: 6px;">pas</span> Khalima et Mme PIRON </p>
 </footer>
