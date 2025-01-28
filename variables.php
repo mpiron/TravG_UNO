@@ -1,6 +1,15 @@
+<!-- Défini au démarrage 
+$cartes  (112 cartes Uno)
+$deckDepart  (Deck mélangé)
+$mainJoueur1 (7 cartes distribuées)
+$mainJoueur2 (7 cartes pour l'ordi)
+$pioche     (le reste du jeu)
+$defausse   première carteaprès distribution aux joueurs
+-->
 <?php
-// deck de 102 cartes Uno
-        $cartes = [
+if (!isset($_SESSION['deckDepart']))
+    {  
+$cartes = [
 ['image' => 'jaune01.jpg','valeur'=> 1, 'couleur'=> 'jaune', 'nom'=>'1 jaune'],
 ['image' => 'jaune01.jpg','valeur'=> 1, 'couleur'=> 'jaune', 'nom'=>'1 jaune'],
 ['image' => 'jaune02.jpg','valeur'=> 2, 'couleur'=> 'jaune', 'nom'=>'2 jaune'],
@@ -101,5 +110,20 @@
 ['image' => 'jocker01.jpg','valeur'=> 13, 'couleur'=> 'jocker', 'nom'=>'changement'],
 ['image' => 'jocker02.jpg','valeur'=> 14, 'couleur'=> 'jocker', 'nom'=>'Jocker +4'],
 ['image' => 'jocker02.jpg','valeur'=> 14, 'couleur'=> 'jocker', 'nom'=>'Jocker +4'],];
+
+$_SESSION['deckDepart']=$cartes;
+shuffle($_SESSION['deckDepart']) ;
+$_SESSION['pioche']=[];
+$_SESSION['mainJoueur1']=[];
+$_SESSION['mainJoueur2']=[];
+$_SESSION['defausse']=[];
+distribuerCartes($_SESSION['deckDepart']);
+
+} 
+
+$mainJoueur1=$_SESSION['mainJoueur1'];
+$mainJoueur2=$_SESSION['mainJoueur2'];
+$pioche=$_SESSION['pioche'];
+$defausse= $_SESSION['defausse'];
 
 ?>
