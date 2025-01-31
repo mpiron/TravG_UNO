@@ -2,12 +2,34 @@
 
 function afficherCartes($listeCartes)
 {
-    $count = 0;
+    $compteur = 0;
     foreach ($listeCartes as $carte) {
-        echo '<a href="index.php? ' . $count . '"><img class="carte" src="cartes/' . $carte['image'] . '" alt="' . $carte['nom'] . '"></a>';
-        $count += 1;
+        echo '<a href="index.php?carte=' . $compteur . '"><img class="carte" src="cartes/' . $carte['image'] . '" alt="' . $carte['nom'] . '"></a>';
+        $compteur += 1;
     }
 }
+
+
+if ($defausse == $cartesRouge); {
+    $jouerRCarte = 'rouge01.jpg' || 'rouge02.jpg' || 'rouge03.jpg' || 'rouge04.jpg' || 'rouge05.jpg' || 'rouge06.jpg' || 'rouge07.jpg' || 'rouge08.jpg' || 'rouge09.jpg' || 'rouge10.jpg' || 'rouge11.jpg' || 'rouge12.jpg' || 'joker01.jpg' || 'joker02.jpg';
+    array_splice($main, 0, $cartes);
+}
+
+if ($defausse == $cartesBleu); {
+    $jouerBCarte = 'bleu01.jpg' || 'bleu02.jpg' || 'bleu03.jpg' || 'bleu04.jpg' || 'bleu05.jpg' || 'bleu06.jpg' || 'bleu07.jpg' || 'bleu08.jpg' || 'bleu09.jpg' || 'bleu10.jpg' || 'bleu11.jpg' || 'bleu12.jpg' || 'joker01.jpg' || 'joker02.jpg';
+    array_splice($main, 0, $cartes);
+}
+
+if ($defausse == $cartesJaune); {
+    $jouerJCarte = 'jaune01.jpg' || 'jaune02.jpg' || 'jaune03.jpg' || 'jaune04.jpg' || 'jaune05.jpg' || 'jaune06.jpg' || 'jaune07.jpg' || 'jaune08.jpg' || 'jaune09.jpg' || 'jaune10.jpg' || 'jaune11.jpg' || 'jaune12.jpg' || 'joker01.jpg' || 'joker02.jpg';
+    array_splice($main, 0, $cartes);
+}
+
+if ($defausse == $cartesVert); {
+    $jouerVCarte = 'vert01.jpg' || 'vert02.jpg' || 'vert03.jpg' || 'vert04.jpg' || 'vert05.jpg' || 'vert06.jpg' || 'vert07.jpg' || 'vert08.jpg' || 'vert09.jpg' || 'vert10.jpg' || 'vert11.jpg' || 'vert12.jpg' || 'joker01.jpg' || 'joker02.jpg';
+    array_splice($main, 0, $cartes);
+}
+
 
 
 function afficherCarteSup($defausse)
