@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
 function afficherCartes($listeCartes)
 {
@@ -9,65 +11,51 @@ function afficherCartes($listeCartes)
     }
 }
 
+
+$cartesRouge = ['rouge01.jpg', 'rouge02.jpg', 'rouge03.jpg', 'rouge04.jpg', 'rouge05.jpg', 'rouge06.jpg', 'rouge07.jpg', 'rouge08.jpg', 'rouge09.jpg', 'rouge10.jpg', 'rouge11.jpg', 'rouge12.jpg', 'joker01.jpg', 'joker02.jpg'];
+$cartesBleu = ['bleu01.jpg', 'bleu02.jpg', 'bleu03.jpg', 'bleu04.jpg', 'bleu05.jpg', 'bleu06.jpg', 'bleu07.jpg', 'bleu08.jpg', 'bleu09.jpg', 'bleu10.jpg', 'bleu11.jpg', 'bleu12.jpg', 'joker01.jpg', 'joker02.jpg'];
+$cartesJaune = ['jaune01.jpg', 'jaune02.jpg', 'jaune03.jpg', 'jaune04.jpg', 'jaune05.jpg', 'jaune06.jpg', 'jaune07.jpg', 'jaune08.jpg', 'jaune09.jpg', 'jaune10.jpg', 'jaune11.jpg', 'jaune12.jpg', 'joker01.jpg', 'joker02.jpg'];
+$cartesVert = ['vert01.jpg', 'vert02.jpg', 'vert03.jpg', 'vert04.jpg', 'vert05.jpg', 'vert06.jpg', 'vert07.jpg', 'vert08.jpg', 'vert09.jpg', 'vert10.jpg', 'vert11.jpg', 'vert12.jpg', 'joker01.jpg', 'joker02.jpg'];
+
+// Vérification si la carte dans la défausse est jouable
+if (in_array($defausse, $cartesRouge)) {
+    $jouerRCarte = $cartesRouge;
+    array_splice($main, 0, $cartes);
+}
+
+if (in_array($defausse, $cartesBleu)) {
+    $jouerBCarte = $cartesBleu;
+    array_splice($main, 0, $cartes);
+}
+
+if (in_array($defausse, $cartesJaune)) {
+    $jouerJCarte = $cartesJaune;
+    array_splice($main, 0, $cartes);
+}
+
+if (in_array($defausse, $cartesVert)) {
+    $jouerVCarte = $cartesVert;
+    array_splice($main, 0, $cartes);
+}
+
+
+
+
+
+
 // Fonction qui vérifie si une carte peut être jouée
-function peutJouerCarte($carteJoueur, $carteDefausse) {
-    // Liste des cartes spéciales pour les jokers et les cartes actions
+function JouerCarte($carteJoueur, $defausse) {
+
     $cartesJokers = ['joker01.jpg', 'joker02.jpg'];
-    $cartesAction = ['plus2.jpg', 'reverse.jpg', 'skip.jpg'];  // Exemples de cartes actions
 
-    // Vérifier si la carte à jouer est un joker
-    if (in_array($carteJoueur, $cartesJokers)) {
-        return true; // Un joker peut toujours être joué
+    // Vérifier si carte est un joker
+    if ($carteJoueur) {
+        return true; // joker peut toujours être jouée
     }
 
-    // Vérifier si la carte à jouer est une carte d'action (par exemple, +2, reverse, skip)
-    if (in_array($carteJoueur, $cartesAction)) {
-        return true; // Une carte d'action peut toujours être jouée
-    }
-
-    // Vérification de la couleur ou du numéro
-    $couleurDefausse = getCouleur($carteDefausse);
-    $numeroDefausse = getNumero($carteDefausse);
-
-    $couleurJoueur = getCouleur($carteJoueur);
-    $numeroJoueur = getNumero($carteJoueur);
-
-    // Si la couleur de la carte du joueur correspond à celle de la carte de la défausse,
-    // ou si le numéro de la carte du joueur correspond à celui de la carte de la défausse
-    if ($couleurJoueur === $couleurDefausse || $numeroJoueur === $numeroDefausse) {
-        return true;
-    }
-
-    // Si aucune condition n'est remplie, la carte ne peut pas être jouée
-    return false;
 }
 
-// Fonction pour extraire la couleur de la carte (en supposant que la couleur est dans le nom du fichier)
-function getCouleur($carte) {
-    // Exemples de couleurs
-    if (strpos($carte, 'rouge') !== false) return 'rouge';
-    if (strpos($carte, 'bleu') !== false) return 'bleu';
-    if (strpos($carte, 'jaune') !== false) return 'jaune';
-    if (strpos($carte, 'vert') !== false) return 'vert';
-    return ''; // Couleur inconnue
-}
 
-// Fonction pour extraire le numéro de la carte (en supposant que le numéro est dans le nom du fichier)
-function getNumero($carte) {
-    // Extraction du numéro (ici, on suppose que le numéro est dans le nom de la carte, après le nom de la couleur)
-    preg_match('/\d+/', $carte, $matches);
-    return isset($matches[0]) ? $matches[0] : '';
-}
-
-// Exemple d'utilisation
-$carteJoueur = 'rouge05.jpg';  // Carte du joueur
-$carteDefausse = 'rouge02.jpg';  // Carte sur la défausse
-
-if (peutJouerCarte($carteJoueur, $carteDefausse)) {
-    echo "La carte peut être jouée.";
-} else {
-    echo "La carte ne peut pas être jouée.";
-}
 
 
 
