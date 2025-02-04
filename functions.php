@@ -39,24 +39,25 @@ if (in_array($defausse, $cartesVert)) {
 }
 
 
-
-
-
-
-// Fonction qui vérifie si une carte peut être jouée
-function JouerCarte($carteJoueur, $defausse) {
-
-    $cartesJokers = ['joker01.jpg', 'joker02.jpg'];
+function JouerCartes($defausse, $carteJoueur) {
+        $cartesJokers = ['joker01.jpg', 'joker02.jpg'];
 
     // Vérifier si carte est un joker
     if ($carteJoueur) {
-        return true; // joker peut toujours être jouée
+        return true; // joker peut toujours être joué
     }
 
-}
+    // Vérifier si num de la carte du joueur correspond à la defausse 
+    return $defausse == $carteJoueur || substr($defausse, -1) == substr($carteJoueur, -1);
+}                                        //va soustraire le dernier caractère de la chaîne
+                                  //utilisé pour récupérer le dernier caractère de chaque carte (càd le numéro)
 
 
+// substr() utilisé pour extraire une portion d'une chaîne de caractères 
+        //fonctionne dirctmnt sur des chaînes de carac, donc plus simple à utiliser qd on travaille avec des chaînes
 
+// array_slice() utilisé pour extraire une portion d'un tableau
+        //retourne un tab contenant les él extraits, même si demande q'un seul élémnt
 
 
 function afficherCarteSup($defausse)
@@ -84,11 +85,12 @@ function distribuerCartes($cartes)
 
 
 
+//que enlevé le truc qui permet commenter, rien modifié
 
-// function piocher($joueur)
-// {
-//     if ($joueur=='j1')
-//         {  $_SESSION['mainJoueur1']=array_merge($_SESSION['mainJoueur1'],array_splice($_SESSION['pioche'],0,1));}
-//     if ($joueur=='j2')
-//         { $_SESSION['mainJoueur2']=array_merge($_SESSION['mainJoueur2'],array_splice($_SESSION['pioche'],0,1));}
-// }
+ function piocher($joueur)
+ {
+     if ($joueur=='j1')
+         {  $_SESSION['mainJoueur1']=array_merge($_SESSION['mainJoueur1'],array_splice($_SESSION['pioche'],0,1));}
+     if ($joueur=='j2')
+         { $_SESSION['mainJoueur2']=array_merge($_SESSION['mainJoueur2'],array_splice($_SESSION['pioche'],0,1));}
+ }
