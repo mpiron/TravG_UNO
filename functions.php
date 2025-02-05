@@ -12,52 +12,52 @@ function afficherCartes($listeCartes)
 }
 
 
-$cartesRouge = ['rouge01.jpg', 'rouge02.jpg', 'rouge03.jpg', 'rouge04.jpg', 'rouge05.jpg', 'rouge06.jpg', 'rouge07.jpg', 'rouge08.jpg', 'rouge09.jpg', 'rouge10.jpg', 'rouge11.jpg', 'rouge12.jpg', 'joker01.jpg', 'joker02.jpg'];
-$cartesBleu = ['bleu01.jpg', 'bleu02.jpg', 'bleu03.jpg', 'bleu04.jpg', 'bleu05.jpg', 'bleu06.jpg', 'bleu07.jpg', 'bleu08.jpg', 'bleu09.jpg', 'bleu10.jpg', 'bleu11.jpg', 'bleu12.jpg', 'joker01.jpg', 'joker02.jpg'];
-$cartesJaune = ['jaune01.jpg', 'jaune02.jpg', 'jaune03.jpg', 'jaune04.jpg', 'jaune05.jpg', 'jaune06.jpg', 'jaune07.jpg', 'jaune08.jpg', 'jaune09.jpg', 'jaune10.jpg', 'jaune11.jpg', 'jaune12.jpg', 'joker01.jpg', 'joker02.jpg'];
-$cartesVert = ['vert01.jpg', 'vert02.jpg', 'vert03.jpg', 'vert04.jpg', 'vert05.jpg', 'vert06.jpg', 'vert07.jpg', 'vert08.jpg', 'vert09.jpg', 'vert10.jpg', 'vert11.jpg', 'vert12.jpg', 'joker01.jpg', 'joker02.jpg'];
+// $cartesRouge = ['rouge01.jpg', 'rouge02.jpg', 'rouge03.jpg', 'rouge04.jpg', 'rouge05.jpg', 'rouge06.jpg', 'rouge07.jpg', 'rouge08.jpg', 'rouge09.jpg', 'rouge10.jpg', 'rouge11.jpg', 'rouge12.jpg', 'joker01.jpg', 'joker02.jpg'];
+// $cartesBleu = ['bleu01.jpg', 'bleu02.jpg', 'bleu03.jpg', 'bleu04.jpg', 'bleu05.jpg', 'bleu06.jpg', 'bleu07.jpg', 'bleu08.jpg', 'bleu09.jpg', 'bleu10.jpg', 'bleu11.jpg', 'bleu12.jpg', 'joker01.jpg', 'joker02.jpg'];
+// $cartesJaune = ['jaune01.jpg', 'jaune02.jpg', 'jaune03.jpg', 'jaune04.jpg', 'jaune05.jpg', 'jaune06.jpg', 'jaune07.jpg', 'jaune08.jpg', 'jaune09.jpg', 'jaune10.jpg', 'jaune11.jpg', 'jaune12.jpg', 'joker01.jpg', 'joker02.jpg'];
+// $cartesVert = ['vert01.jpg', 'vert02.jpg', 'vert03.jpg', 'vert04.jpg', 'vert05.jpg', 'vert06.jpg', 'vert07.jpg', 'vert08.jpg', 'vert09.jpg', 'vert10.jpg', 'vert11.jpg', 'vert12.jpg', 'joker01.jpg', 'joker02.jpg'];
 
-// Vérification si la carte dans la défausse est jouable
-if (in_array($defausse, $cartesRouge)) {
-    $jouerRCarte = $cartesRouge;
-    array_splice($main, 0, $cartes);
-}
+// // Vérification si la carte dans la défausse est jouable
+// if (in_array($defausse, $cartesRouge)) {
+//     $jouerRCarte = $cartesRouge;
+//     array_splice($main, 0, $cartes);
+// }
 
-if (in_array($defausse, $cartesBleu)) {
-    $jouerBCarte = $cartesBleu;
-    array_splice($main, 0, $cartes);
-}
+// if (in_array($defausse, $cartesBleu)) {
+//     $jouerBCarte = $cartesBleu;
+//     array_splice($main, 0, $cartes);
+// }
 
-if (in_array($defausse, $cartesJaune)) {
-    $jouerJCarte = $cartesJaune;
-    array_splice($main, 0, $cartes);
-}
+// if (in_array($defausse, $cartesJaune)) {
+//     $jouerJCarte = $cartesJaune;
+//     array_splice($main, 0, $cartes);
+// }
 
-if (in_array($defausse, $cartesVert)) {
-    $jouerVCarte = $cartesVert;
-    array_splice($main, 0, $cartes);
-}
-
-
-function JouerCartes($defausse, $carteJoueur) {
-        $cartesJokers = ['joker01.jpg', 'joker02.jpg'];
-
-    // Vérifier si carte est un joker
-    if ($carteJoueur) {
-        return true; // joker peut toujours être joué
-    }
-
-    // Vérifier si num de la carte du joueur correspond à la defausse 
-    return $defausse == $carteJoueur || substr($defausse, -1) == substr($carteJoueur, -1);
-}                                        //va soustraire le dernier caractère de la chaîne
-                                  //utilisé pour récupérer le dernier caractère de chaque carte (càd le numéro)
+// if (in_array($defausse, $cartesVert)) {
+//     $jouerVCarte = $cartesVert;
+//     array_splice($main, 0, $cartes);
+// }
 
 
-// substr() utilisé pour extraire une portion d'une chaîne de caractères 
-        //fonctionne dirctmnt sur des chaînes de carac, donc plus simple à utiliser qd on travaille avec des chaînes
+// function JouerCartes($defausse, $carteJoueur) {
+//         $cartesJokers = ['joker01.jpg', 'joker02.jpg'];
 
-// array_slice() utilisé pour extraire une portion d'un tableau
-        //retourne un tab contenant les él extraits, même si demande q'un seul élémnt
+//     // Vérifier si carte est un joker
+//     if ($carteJoueur) {
+//         return true; // joker peut toujours être joué
+//     }
+
+//     // Vérifier si num de la carte du joueur correspond à la defausse 
+//     return $defausse == $carteJoueur || substr($defausse, -1) == substr($carteJoueur, -1);
+// }                                        //va soustraire le dernier caractère de la chaîne (recherché une fonction utile à utiliser pr enlever cartes)
+//                                   //utilisé pour récupérer le dernier caractère de chaque carte (càd le numéro)
+
+
+// // substr() utilisé pour extraire une portion d'une chaîne de caractères 
+//         //fonctionne dirctmnt sur des chaînes de carac, donc plus simple à utiliser qd on travaille avec des chaînes
+
+// // array_slice() utilisé pour extraire une portion d'un tableau
+//         //retourne un tab contenant les él extraits, même si demande q'un seul élémnt
 
 
 function afficherCarteSup($defausse)
