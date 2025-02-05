@@ -1,14 +1,27 @@
 <?php
 
-function afficherCartes($listeCartes)
+function afficherCartes($listeCartes,$sourceCarte="none")
 {
     $compteur = 0;
     foreach ($listeCartes as $carte) {
-        echo '<a href="index.php?carte=' . $compteur . '"><img class="carte" src="cartes/' . $carte['image'] . '" alt="' . $carte['nom'] . '"></a>';
-        $compteur += 1;
+        echo '<a href="index.php?carte=' . $count . '&source='.$sourceCarte.'"><img class="carte" src="cartes/' . $carte['image'] . '" alt="' . $carte['nom'] . '"></a>';
+        $count += 1;
     }
 }
 
+function jouerCarte($positionDansLaMain,$identitejoueur="none")
+{
+    if ($identitejoueur == 1)
+    {   $carteJouee = array_splice($_SESSION['mainJoueur1'], $positionDansLaMain, 1);
+        // Ajouter la carte au début de la défausse
+        array_unshift($_SESSION['defausse'], $carteJouee[0]);
+    }
+    elseif ($identitejoueur==2)
+    {   $carteJouee = array_splice($_SESSION['mainJoueur2'], $positionDansLaMain, 1);
+        // Ajouter la carte au début de la défausse
+        array_unshift($_SESSION['defausse'], $carteJouee[0]);
+    }
+}
 
 if ($defausse == $cartesRouge); {
     $jouerRCarte = 'rouge01.jpg' || 'rouge02.jpg' || 'rouge03.jpg' || 'rouge04.jpg' || 'rouge05.jpg' || 'rouge06.jpg' || 'rouge07.jpg' || 'rouge08.jpg' || 'rouge09.jpg' || 'rouge10.jpg' || 'rouge11.jpg' || 'rouge12.jpg' || 'joker01.jpg' || 'joker02.jpg';
@@ -34,7 +47,7 @@ if ($defausse == $cartesVert); {
 
 function afficherCarteSup($defausse)
 {
-    echo '<img class="carte" src="cartes/' . $defausse[0]['image'] . '" alt="' . $defausse[0]['nom'] . '">';
+    echo '<img class="carte" src="cartes/' . $_SESSION['defausse'][0]['image'] . '" alt="' . $_SESSION['defausse'][0]['nom'] . '">';
 }
 
 
