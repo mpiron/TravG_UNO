@@ -14,18 +14,18 @@ if (isset($_GET['carte']))
 ?>
 
 <div id="container">
-    <h1>Cartes dans un deck neuf</h1>
+    <h1>Cartes cachées dans la pioche</h1>
     <?php 
-    afficherCartes($_SESSION['deckDepart']);
+    afficherCartes($pioche);
     echo("<h3>main joueur1 </h3>"); 
-    afficherCartes($_SESSION['mainJoueur1'],1);
+    afficherCartes($mainJoueur1,1);
     echo("<h3>main ordi = joueur2</h3>"); 
-    afficherCartes($_SESSION['mainJoueur2'],2);
+    afficherCartes($mainJoueur2,2);
     echo("<h3>Pioche</h3>"); 
     afficherPioche();
-    //afficherCartes($_SESSION['pioche']);
+    //afficherCartes($pioche);
     echo("<h3>Défausse</h3>"); 
-    afficherCarteSup($_SESSION['defausse']);
+    afficherCarteSup($defausse);
 ?> 
 
 </div>
