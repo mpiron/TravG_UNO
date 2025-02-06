@@ -107,10 +107,10 @@ if (!isset($_SESSION['deckDepart']))
         ['image' => 'rouge11.jpg','valeur'=> 11, 'couleur'=> 'rouge', 'nom'=>'stop rouge'],
         ['image' => 'rouge12.jpg','valeur'=> 12, 'couleur'=> 'rouge', 'nom'=>'+2 rouge'],
         ['image' => 'rouge12.jpg','valeur'=> 12, 'couleur'=> 'rouge', 'nom'=>'+2 rouge'],
-        ['image' => 'jocker01.jpg','valeur'=> 13, 'couleur'=> 'jocker', 'nom'=>'changement'],
-        ['image' => 'jocker01.jpg','valeur'=> 13, 'couleur'=> 'jocker', 'nom'=>'changement'],
-        ['image' => 'jocker02.jpg','valeur'=> 14, 'couleur'=> 'jocker', 'nom'=>'Jocker +4'],
-        ['image' => 'jocker02.jpg','valeur'=> 14, 'couleur'=> 'jocker', 'nom'=>'Jocker +4'],];
+        ['image' => 'joker01.jpg','valeur'=> 13, 'couleur'=> 'joker', 'nom'=>'changement'],
+        ['image' => 'joker01.jpg','valeur'=> 13, 'couleur'=> 'joker', 'nom'=>'changement'],
+        ['image' => 'joker02.jpg','valeur'=> 14, 'couleur'=> 'joker', 'nom'=>'Joker +4'],
+        ['image' => 'joker02.jpg','valeur'=> 14, 'couleur'=> 'joker', 'nom'=>'Joker +4'],];
         
         $_SESSION['deckDepart'] = $cartes;
         shuffle($_SESSION['deckDepart']) ;

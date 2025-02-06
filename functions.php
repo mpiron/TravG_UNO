@@ -1,4 +1,4 @@
-<?php
+<?php  
 
 function afficherCartes($listeCartes,$sourceCarte="none")
 {
@@ -23,6 +23,29 @@ function jouerCarte($positionDansLaMain,$identitejoueur="none")
         array_unshift($defausse, $carteJouee[0]);
     }
 }
+
+
+
+
+function ajouterCarteAMain(&$mainJoueur1, $cartePiochee) {
+//  global $mainJoueur1, $pioche;
+    $mainJoueur1[] = $cartePiochee;
+
+}
+
+
+// Pioche une carte et ajoute-la à la main du joueur
+if (isset($_POST['piocherCarte'])) {
+    $cartePiochee = array_shift($_SESSION['deckDepart']); // Pioche la première carte du deck
+    ajouterCarteAMain($_SESSION['mainJoueur1'], $cartePiochee); // Ajoute la carte à la main du joueur 1
+}
+
+
+
+// array_shift() retire et retourne un seul élément du début du tab
+// array_push() permet ajouter un/plusieurs él à la fin d'un tab
+
+
 
 function afficherCarteSup($defausse)
 {
@@ -51,6 +74,7 @@ function distribuerCartes($cartes)
     $defausse = array_splice($cartes, 0, 1);  //on retourne la 1er carte de la pioche
     $pioche = $cartes; //les cartes qui restent se retrouvent dans la pioche
 }
+
 
 
 // function piocher($joueur)

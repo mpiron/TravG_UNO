@@ -23,7 +23,17 @@ if (isset($_GET['carte']))
     afficherCartes($mainJoueur2,2);
     echo("<h3>Pioche</h3>"); 
     afficherPioche();
-    //afficherCartes($pioche);
+
+   
+    ?>
+    <!-- Section pour "piocher une carte" -->
+    <form method="post">
+        <button type="submit" name="piocherCarte">Piocher une carte</button>
+    </form>
+   
+    <?php
+
+
     echo("<h3>Défausse</h3>"); 
     afficherCarteSup($defausse);
 ?> 
