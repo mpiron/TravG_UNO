@@ -1,24 +1,33 @@
-<!-- etape2.php -->
-<!-- première fonction afficher carte -->
+<!-- etape3.php -->
+<!-- distribuer / piocher / session -->
 <?php
-include_once('variables.php');
+include_once('session.php');
 include_once('functions.php');
-include_once('header.php'); ?>
+include_once('variables.php');
+include_once('header.php');
+
+// actions de jeu
+if (isset($_GET['carte']))
+{ jouerCarte($_GET['carte'],$_GET['source']);}
+
+
+?>
 
 <div id="container">
-    <h1>Cartes dans un deck neuf</h1>
-    <?php
-    shuffle($cartes);
-    afficherCartes($cartes);
-    // Appeler la fonction pour distribuer 7 cartes à 2 joueurs
-    $mainJoueur = distribuerCartes($cartes);?>
-    <h3>main du joueur</h3>
-    Elles étaient là mais on le les voyaient pas 
-    car il n'y avait pas de séparation avec les cartes du deck, juste au-dessus. <br>
-    <?php  
-    afficherCartes($mainJoueur);
-    ?>
-    
+    <h1>Cartes cachées dans la pioche</h1>
+    <?php 
+    afficherCartes($pioche);
+    echo("<h3>main joueur1 </h3>"); 
+    afficherCartes($mainJoueur1,1);
+    echo("<h3>main ordi = joueur2</h3>"); 
+    afficherCartes($mainJoueur2,2);
+    echo("<h3>Pioche</h3>"); 
+    afficherPioche();
+    //afficherCartes($pioche);
+    echo("<h3>Défausse</h3>"); 
+    afficherCarteSup($defausse);
+?> 
+
 </div>
 
 <!-- inclusion du bas de page du site -->
