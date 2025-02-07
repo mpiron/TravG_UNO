@@ -2,9 +2,9 @@
 function afficherCartes($listeCartes,$sourceCarte="none")
 {
     $compteur = 0;
-    foreach ($listeCartes as $carte) {
+    foreach ($listeCartes as $carte) {    if ($carte !== null) {
         echo '<a href="index.php?carte=' . $compteur . '&source='.$sourceCarte.'"><img class="carte" src="cartes/' . $carte['image'] . '" alt="' . $carte['nom'] . '"></a>';
-        $compteur += 1;
+     }$compteur += 1;
     }
 }
 
@@ -23,8 +23,10 @@ function jouerCarte($positionDansLaMain,$identitejoueur="none")
 }
 
 function afficherCarteSup($defausse)
-{
+{    if ($defausse !== null) 
+    {
     echo '<img class="carte" src="cartes/' . $defausse[0]['image'] . '" alt="' . $defausse[0]['nom'] . '">';
+    }
 }
 
 

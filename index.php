@@ -7,9 +7,15 @@ include_once('variables.php');
 include_once('header.php');
 
 // actions de jeu
+//Joue un carte si une carte vient d'être sélectionnée
 if (isset($_GET['carte']))
 { jouerCarte($_GET['carte'],$_GET['source']);}
-
+  
+// Pioche une carte si le bouton  de la pioche vient d'être enfoncé
+  if (isset($_POST['piocherCarte'])) {
+    // echo($_POST['piocherCarte']);
+    $mainJoueur1 = array_merge($mainJoueur1, array_splice($pioche, 0, 1));
+}
 
 ?>
 
@@ -23,9 +29,17 @@ if (isset($_GET['carte']))
     afficherCartes($mainJoueur2,2);
     echo("<h3>Pioche</h3>"); 
     afficherPioche();
-    //afficherCartes($pioche);
+?>
+    <!-- Section pour "piocher une carte" -->
+    <form method="post" action="index.php">
+        <button type="submit" name="piocherCarte">Piocher une carte</button>
+    </form>
+
+<?php
     echo("<h3>Défausse</h3>"); 
     afficherCarteSup($defausse);
+    echo("<br>"); 
+    afficherCartes($defausse);
 ?> 
 
 </div>
