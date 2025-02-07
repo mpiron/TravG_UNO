@@ -6,37 +6,42 @@ include_once('functions.php');
 include_once('variables.php');
 include_once('header.php');
 
-// actions de jeu
-if (isset($_GET['carte']))
-{ jouerCarte($_GET['carte'],$_GET['source']);}
+// actions de jeu (qd commence à jouer) 
+if (isset($_GET['carte'])) {
+    jouerCarte($_GET['carte'], $_GET['source']);
+}
 
 
 ?>
 
 <div id="container">
     <h1>Cartes cachées dans la pioche</h1>
-    <?php 
+    <?php
     afficherCartes($pioche);
-    echo("<h3>main joueur1 </h3>"); 
-    afficherCartes($mainJoueur1,1);
-    echo("<h3>main ordi = joueur2</h3>"); 
-    afficherCartes($mainJoueur2,2);
-    echo("<h3>Pioche</h3>"); 
+    echo ("<h3>main joueur1 </h3>");
+    afficherCartes($mainJoueur1, 1);
+    echo ("<h3>main ordi = joueur2</h3>");
+    afficherCartes($mainJoueur2, 2);
+    echo ("<h3>Pioche</h3>");
     afficherPioche();
 
-   
+
     ?>
     <!-- Section pour "piocher une carte" -->
     <form method="post">
         <button type="submit" name="piocherCarte">Piocher une carte</button>
     </form>
-   
     <?php
 
+    // Pioche une carte si le bouton vient d'être enfoncé
+    if (isset($_POST['piocherCarte'])) {
+        $mainJoueur1 = array_merge($mainJoueur1, array_splice($pioche, 0, 1));
+    }
 
-    echo("<h3>Défausse</h3>"); 
+
+    echo ("<h3>Défausse</h3>");
     afficherCarteSup($defausse);
-?> 
+    ?>
 
 </div>
 

@@ -1,47 +1,37 @@
-<?php  
+<?php
 
-function afficherCartes($listeCartes,$sourceCarte="none")
+function afficherCartes($listeCartes, $sourceCarte = "none")
 {
     $compteur = 0;
     foreach ($listeCartes as $carte) {
-        echo '<a href="index.php?carte=' . $compteur . '&source='.$sourceCarte.'"><img class="carte" src="cartes/' . $carte['image'] . '" alt="' . $carte['nom'] . '"></a>';
+        echo '<a href="index.php?carte=' . $compteur . '&source=' . $sourceCarte . '"><img class="carte" src="cartes/' . $carte['image'] . '" alt="' . $carte['nom'] . '"></a>';
         $compteur += 1;
     }
 }
 
 
-function jouerCarte($positionDansLaMain,$identitejoueur="none")
-{global $mainJoueur1, $mainJoueur2,$defausse;
-    if ($identitejoueur == 1)
-    {   $carteJouee = array_splice($mainJoueur1, $positionDansLaMain, 1);
+function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
+{
+    global $mainJoueur1, $mainJoueur2, $defausse;
+    if ($identiteJoueur == 1) {
+        $carteJouee = array_splice($mainJoueur1, $positionDansLaMain, 1);
+        // Ajouter la carte au début de la défausse
+        array_unshift($defausse, $carteJouee[0]);
+    } elseif ($identiteJoueur == 2) {
+        $carteJouee = array_splice($mainJoueur2, $positionDansLaMain, 1);
         // Ajouter la carte au début de la défausse
         array_unshift($defausse, $carteJouee[0]);
     }
-    elseif ($identitejoueur==2)
-    {   $carteJouee = array_splice($mainJoueur2, $positionDansLaMain, 1);
-        // Ajouter la carte au début de la défausse
-        array_unshift($defausse, $carteJouee[0]);
-    }
 }
 
 
 
 
-function ajouterCarteAMain(&$mainJoueur1, $cartePiochee) {
-//  global $mainJoueur1, $pioche;
-    $mainJoueur1[] = $cartePiochee;
-
-}
-
-
-// Pioche une carte et ajoute-la à la main du joueur
-if (isset($_POST['piocherCarte'])) {
-    $cartePiochee = array_shift($_SESSION['deckDepart']); // Pioche la première carte du deck
-    ajouterCarteAMain($_SESSION['mainJoueur1'], $cartePiochee); // Ajoute la carte à la main du joueur 1
-}
-
-
-
+// function piocherCarte($identiteJoueur = "Joueur1")
+// {
+//     global $mainJoueur1, $pioche;
+//     $mainJoueur1 = array_merge($mainJoueur1, array_splice($pioche, 0, 1));
+// }
 // array_shift() retire et retourne un seul élément du début du tab
 // array_push() permet ajouter un/plusieurs él à la fin d'un tab
 
@@ -61,7 +51,7 @@ function afficherPioche()
 
 function distribuerCartes($cartes)
 {
-    global $mainJoueur1, $mainJoueur2, $defausse, $pioche; 
+    global $mainJoueur1, $mainJoueur2, $defausse, $pioche;
     if (!isset($mainJoueur1)) $mainJoueur1 = [];
     if (!isset($mainJoueur2)) $mainJoueur2 = [];
     if (!isset($defausse)) $defausse = [];
@@ -84,4 +74,3 @@ function distribuerCartes($cartes)
 //     if ($joueur=='j2')
 //         { $mainJoueur2=array_merge($mainJoueur2,array_splice($pioche,0,1));}
 // }
-
