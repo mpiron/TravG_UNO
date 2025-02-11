@@ -26,6 +26,55 @@ function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
 
 
 
+// function verifierCouleurNumero($defausse[0], $positionDansLaMain) {
+//     // Vérifier si la couleur correspond
+//     if ($defausse[0]['image']['couleur'] == $positionDansLaMain['couleur']) {
+//         // Comparer les numéros si la couleur est identique
+//         if ($defausse[0]['image']['nombre'] == $positionDansLaMain['nombre']) {
+//             echo "Carte déposée valide (même numéro).";
+//         } else {
+//             echo "Faux, la couleur est correcte mais le numéro ne correspond pas.";
+//         }
+//     } else {
+//         // Si la couleur ne correspond pas
+//         echo "Faux, la couleur ne correspond pas.";
+//     }
+// }
+
+
+
+
+
+
+
+ // Comparer la couleur
+ if ($defausse[0]['couleur'] == $positionDansLaMain['couleur']) {
+    echo "Carte déposée a la même couleur";
+    // Comparer les numéros si la couleur est identique
+    if ($defausse[0]['valeur'] == $positionDansLaMain['valeur']) {
+        echo "Carte déposée a le même numéro";
+       
+        $carteJouee = array_splice($mainJoueur1, $positionDansLaMain, 1);
+        // Ajouter la carte au début de la défausse
+        array_unshift($defausse, $carteJouee[0]);
+    }
+}
+
+
+do {
+    $carteJouee = array_splice($mainJoueur1, $positionDansLaMain, 1);
+        // Ajouter la carte au début de la défausse
+        array_unshift($defausse, $carteJouee[0]);
+} while (isset($defausse) && count($defausse) > 0); // Continue tant qu'il y a des cartes dans la défausse
+
+//count($defausse) > 0 : condition vérifie si moins un él das tab $defausse  
+    //Si tab est vide (donc count($defausse) retourne 0), boucle s'arrête 
+
+
+
+
+
+
 
 // function piocherCarte($identiteJoueur = "Joueur1")
 // {

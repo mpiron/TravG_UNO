@@ -28,12 +28,12 @@ if (isset($_GET['carte'])) {
 
     ?>
     <!-- Section pour "piocher une carte" -->
-    <form method="post">
+    <form method="post" action="index.php">
         <button type="submit" name="piocherCarte">Piocher une carte</button>
     </form>
     <?php
 
-    // Pioche une carte si le bouton vient d'être enfoncé
+    // Pioche une carte si le bouton vient d'être appuyé
     if (isset($_POST['piocherCarte'])) {
         $mainJoueur1 = array_merge($mainJoueur1, array_splice($pioche, 0, 1));
     }
