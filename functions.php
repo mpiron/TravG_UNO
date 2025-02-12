@@ -10,66 +10,30 @@ function afficherCartes($listeCartes, $sourceCarte = "none")
 }
 
 
+
+
 function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
 {
     global $mainJoueur1, $mainJoueur2, $defausse;
     if ($identiteJoueur == 1) {
-        $carteJouee = array_splice($mainJoueur1, $positionDansLaMain, 1);
-        // Ajouter la carte au début de la défausse
-        array_unshift($defausse, $carteJouee[0]);
+        // Comparer la couleur
+        if ($defausse[0]['couleur'] == $mainJoueur1[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur1[$positionDansLaMain]['valeur'] or $mainJoueur2[$positionDansLaMain]['image'] == ['joker01.jpg', 'joker02.jpg']) {
+            //    echo "Carte déposée a la même couleur";
+            $carteJouee = array_splice($mainJoueur1, $positionDansLaMain, 1);
+            // Ajouter la carte au début de la défausse
+            array_unshift($defausse, $carteJouee[0]);
+        }
     } elseif ($identiteJoueur == 2) {
-        $carteJouee = array_splice($mainJoueur2, $positionDansLaMain, 1);
-        // Ajouter la carte au début de la défausse
-        array_unshift($defausse, $carteJouee[0]);
+        // Comparer la couleur
+        if ($defausse[0]['couleur'] == $mainJoueur2[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur2[$positionDansLaMain]['valeur'] or $mainJoueur2[$positionDansLaMain]['image'] == ['joker01.jpg', 'joker02.jpg']) {
+            //    echo "Carte déposée a la même couleur";
+            // Ajouter la carte au début de la défausse
+            $carteJouee = array_splice($mainJoueur2, $positionDansLaMain, 1);
+            // Ajouter la carte au début de la défausse
+            array_unshift($defausse, $carteJouee[0]);
+        }
     }
 }
-
-
-
-// function verifierCouleurNumero($defausse[0], $positionDansLaMain) {
-//     // Vérifier si la couleur correspond
-//     if ($defausse[0]['image']['couleur'] == $positionDansLaMain['couleur']) {
-//         // Comparer les numéros si la couleur est identique
-//         if ($defausse[0]['image']['nombre'] == $positionDansLaMain['nombre']) {
-//             echo "Carte déposée valide (même numéro).";
-//         } else {
-//             echo "Faux, la couleur est correcte mais le numéro ne correspond pas.";
-//         }
-//     } else {
-//         // Si la couleur ne correspond pas
-//         echo "Faux, la couleur ne correspond pas.";
-//     }
-// }
-
-
-
-
-
-
-
- // Comparer la couleur
- if ($defausse[0]['couleur'] == $positionDansLaMain['couleur']) {
-    echo "Carte déposée a la même couleur";
-    // Comparer les numéros si la couleur est identique
-    if ($defausse[0]['valeur'] == $positionDansLaMain['valeur']) {
-        echo "Carte déposée a le même numéro";
-       
-        $carteJouee = array_splice($mainJoueur1, $positionDansLaMain, 1);
-        // Ajouter la carte au début de la défausse
-        array_unshift($defausse, $carteJouee[0]);
-    }
-}
-
-
-do {
-    $carteJouee = array_splice($mainJoueur1, $positionDansLaMain, 1);
-        // Ajouter la carte au début de la défausse
-        array_unshift($defausse, $carteJouee[0]);
-} while (isset($defausse) && count($defausse) > 0); // Continue tant qu'il y a des cartes dans la défausse
-
-//count($defausse) > 0 : condition vérifie si moins un él das tab $defausse  
-    //Si tab est vide (donc count($defausse) retourne 0), boucle s'arrête 
-
 
 
 
