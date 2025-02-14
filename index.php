@@ -11,6 +11,14 @@ if (isset($_GET['carte'])) {
     jouerCarte($_GET['carte'], $_GET['source']);
 }
 
+// Pioche une carte si le bouton vient d'être appuyé par joueur1
+if (isset($_POST['piocherCarte1'])) {
+    $mainJoueur1 = array_merge($mainJoueur1, array_splice($pioche, 0, 1));
+}
+// Pioche une carte si le bouton vient d'être appuyé par joueur2
+if (isset($_POST['piocherCarte2'])) {
+    $mainJoueur2 = array_merge($mainJoueur2, array_splice($pioche, 0, 1));
+}
 
 ?>
 
@@ -29,15 +37,8 @@ if (isset($_GET['carte'])) {
     </form>
     <?php
 
-    // Pioche une carte si le bouton vient d'être appuyé par joueur1
-    if (isset($_POST['piocherCarte1'])) {
-        $mainJoueur1 = array_merge($mainJoueur1, array_splice($pioche, 0, 1));
-    }
-
-
     echo ("<h3>main ordi = joueur2</h3>");
     afficherCartes($mainJoueur2, 2);
-
 
     ?>
     <!-- Section pour "piocher une carte" -->
@@ -45,11 +46,6 @@ if (isset($_GET['carte'])) {
         <button type="submit" name="piocherCarte2">Piocher une carte</button>
     </form>
     <?php
-
-    // Pioche une carte si le bouton vient d'être appuyé par joueur2
-    if (isset($_POST['piocherCarte2'])) {
-        $mainJoueur2 = array_merge($mainJoueur2, array_splice($pioche, 0, 1));
-    }
 
 
     echo ("<h3>Pioche</h3>");
@@ -73,6 +69,21 @@ if (isset($_GET['carte'])) {
         echo ("<h3>Défausse</h3>");
         afficherCarteSup($defausse);
         ?>
+
+
+    <form action="index.php" method="post">
+        <label for="couleur">Choisissez une couleur :</label>
+        <select name="couleur" id="couleur">
+            <option value="rouge">Rouge</option>
+            <option value="vert">Vert</option>
+            <option value="bleu">Bleu</option>
+            <option value="jaune">Jaune</option>
+        </select>
+        <input type="submit" value="Envoyer">
+    </form>
+
+
+
 
 </div>
 

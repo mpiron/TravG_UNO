@@ -17,7 +17,7 @@ function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
     global $mainJoueur1, $mainJoueur2, $defausse;
     if ($identiteJoueur == 1) {
         // Comparer la couleur
-        if ($defausse[0]['couleur'] == $mainJoueur1[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur1[$positionDansLaMain]['valeur'] or $mainJoueur2[$positionDansLaMain]['image'] == ['joker01.jpg', 'joker02.jpg']) {
+        if ($defausse[0]['couleur'] == $mainJoueur1[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur1[$positionDansLaMain]['valeur'] or $mainJoueur1[$positionDansLaMain]['couleur'] == 'joker') {
             //    echo "Carte déposée a la même couleur";
             $carteJouee = array_splice($mainJoueur1, $positionDansLaMain, 1);
             // Ajouter la carte au début de la défausse
@@ -25,7 +25,7 @@ function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
         }
     } elseif ($identiteJoueur == 2) {
         // Comparer la couleur
-        if ($defausse[0]['couleur'] == $mainJoueur2[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur2[$positionDansLaMain]['valeur'] or $mainJoueur2[$positionDansLaMain]['image'] == ['joker01.jpg', 'joker02.jpg']) {
+        if ($defausse[0]['couleur'] == $mainJoueur2[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur2[$positionDansLaMain]['valeur'] or $mainJoueur2[$positionDansLaMain]['couleur'] == 'joker') {
             //    echo "Carte déposée a la même couleur";
             // Ajouter la carte au début de la défausse
             $carteJouee = array_splice($mainJoueur2, $positionDansLaMain, 1);
@@ -34,6 +34,23 @@ function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
         }
     }
 }
+
+
+
+
+
+
+function changerCouleur($positionDansLaMain, $identiteJoueur = "none")
+{
+    global $mainJoueur1, $mainJoueur2, $defausse;
+    if ($defausse[0] == $mainJoueur2[$positionDansLaMain]['couleur']['joker']) {
+    }
+}
+
+
+
+
+
 
 
 
