@@ -37,19 +37,76 @@ function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
 
 
 
+// function changerCouleur($positionDansLaMain, $identiteJoueur = "none")
+// {
+//     global $mainJoueur1, $mainJoueur2, $defausse;
+//     if ($defausse[0] == $mainJoueur2[$positionDansLaMain]['couleur']['joker']) {
+//     }
+// }
+
+
+
 
 
 
 function changerCouleur($positionDansLaMain, $identiteJoueur = "none")
 {
     global $mainJoueur1, $mainJoueur2, $defausse;
-    if ($defausse[0] == $mainJoueur2[$positionDansLaMain]['couleur']['joker']) {
+
+    // // Vérifier si la carte est un joker
+    // if ($mainJoueur1[$positionDansLaMain]['couleur'] == 'joker' or $mainJoueur2[$positionDansLaMain]['couleur'] == 'joker') { 
+
+    //     echo '
+    //     <form action="index.php" method="post">
+    //         <label for="couleur">Choisissez une couleur :</label>
+    //         <select name="couleur" id="couleur">
+    //             <option value="rouge">Rouge</option>
+    //             <option value="vert">Vert</option>
+    //             <option value="bleu">Bleu</option>
+    //             <option value="jaune">Jaune</option>
+    //         </select>
+    //         <input type="submit" value="Envoyer">
+    //     </form>
+    // '; 
+    // // Si couleur a été envoyée par formulaire           //vérifie si val envoyée dans $_POST['couleur'] fait partie des couleurs dans tab : 'rouge', 'vert', 'bleu', 'jaune' 
+    // if (isset($_POST['couleur']) and in_array($_POST['couleur'], ['rouge', 'vert', 'bleu', 'jaune'])) {
+    //     $nouvelleCouleur = $_POST['couleur'];
+    //     // Mettre à jour la défausse avec la couleur choisie par le joueur
+    //     $defausse[0]['couleur'] = $nouvelleCouleur;
+    //     // Afficher le changement de couleur
+    //     echo "La couleur a été changée en $nouvelleCouleur.";
+    // } 
+
+    // }
+
+
+
+    if ($defausse[0]['couleur'] == 'joker') { 
+        echo '
+        <form action="index.php" method="post">
+            <label for="couleur">Choisissez une couleur :</label>
+            <select name="couleur" id="couleur">
+                <option value="rouge">Rouge</option>
+                <option value="vert">Vert</option>
+                <option value="bleu">Bleu</option>
+                <option value="jaune">Jaune</option>
+            </select>
+            <input type="submit" value="Envoyer">
+        </form>
+        '; 
+
+        // Si couleur a été envoyée par formulaire et si c'est une couleur valide
+        if (isset($_POST['couleur']) && in_array($_POST['couleur'], ['rouge', 'vert', 'bleu', 'jaune'])) {
+            $nouvelleCouleur = $_POST['couleur'];
+            // Mettre à jour la défausse avec la couleur choisie par le joueur
+            $defausse[0]['couleur'] = $nouvelleCouleur;
+            echo "La couleur a été changée en $nouvelleCouleur.";
+        }
+
+
     }
+
 }
-
-
-
-
 
 
 
