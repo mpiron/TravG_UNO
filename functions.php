@@ -60,3 +60,54 @@ function distribuerCartes($cartes)
     $defausse = array_splice($cartes, 0, 1);  //on retourne la 1er carte de la pioche
     $pioche = $cartes; //les cartes qui restent se retrouvent dans la pioche
 }
+
+
+
+function tourJoueur($identiteJoueur)
+{
+    global $mainJoueur1, $mainJoueur2, $defausse, $pioche;
+
+    if ($identiteJoueur == 1) {
+        $identiteJoueur += 1;
+    }
+}
+
+
+
+
+
+
+
+
+// //exmples trouvé: 
+
+// // https://openclassrooms.com/forum/sujet/fonction-quot-pour-alternerquot-83828 
+
+// //1 ex
+// // Initialisation des joueurs
+// $joueurs = ["Joueur 1", "Joueur 2"];
+// $tour = 0; // Indice du joueur actuel
+
+// // Fonction pour alterner les joueurs
+// function alternerJoueur(&$tour)
+// {
+//     $tour = ($tour + 1) % 2;
+// }
+
+// // Simulation de quelques tentatives
+// for ($i = 0; $i < 10; $i++) {
+//     echo "Tentative " . ($i + 1) . ": " . $joueurs[$tour] . " joue.\n";
+//     alternerJoueur($tour);
+// }
+
+
+
+// //2 ex 
+// function alternerJoueur($joueurActuel) {
+//     return $joueurActuel === 'Joueur 1' ? 'Joueur 2' : 'Joueur 1';
+// }
+
+// // Exemple d'utilisation
+// $joueurActuel = 'Joueur 1';
+// $joueurSuivant = alternerJoueur($joueurActuel);
+// echo "Le joueur suivant est : " . $joueurSuivant; // Affiche "Le joueur suivant est : Joueur 2"
