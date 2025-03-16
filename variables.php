@@ -7,6 +7,7 @@ $pioche     (le reste du jeu)
 $defausse   première carteaprès distribution aux joueurs
 -->
 <?php
+
 if (!isset($_SESSION['deckDepart']))
     {  
         $cartes = [
@@ -126,6 +127,7 @@ else
         $mainJoueur2=$_SESSION['mainJoueur2'];
         $pioche=$_SESSION['pioche'];
         $defausse= $_SESSION['defausse'];
+        // dans le fichier footer.php nous redéfinissons les variables $SESSION en fin d'affichage 
     }
 
 ?>

@@ -6,10 +6,5 @@
     {
       $_SESSION = [];
     }
-  else
-  { $mainJoueur1=$_SESSION['mainJoueur1'];
-    $mainJoueur2=$_SESSION['mainJoueur2'];
-    $pioche= $_SESSION['pioche'];
-    $defausse=$_SESSION['defausse'];
-  }
+    
 ?>
