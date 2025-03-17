@@ -1,26 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="cssia.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="container">
-       
-        <div id="joueur1">  <div id="tapis1">
 
-            <h3>Défausse</h3>
-            <img class="carte" src="cartes/jaune11.jpg" alt="stop jaune">
-            <h3>Pioche</h3>
-          <form method="post" action="index.php" style="text-align: center;">
-                <button type="submit" name="piocherCarte1"
-                style=" background: #bbbb; border-radius: 10px;">
-                <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
-                
-            </form>  </div>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="container">
+            <div class="smallcontainer tapisJ1">
+                <div id="tapisJ1" ">
+                    <div class=" tas1">
+                    <h3>Défausse</h3>
+                    <img class="carte" src="cartes/jaune11.jpg" alt="stop jaune">
+                    <h3>Pioche</h3>
+                    <form method="post" action="index.php" style="text-align: center;">
+                        <button type="submit" name="piocherCarte1" style=" background: #bbbb; border-radius: 10px;">
+                            <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
+
+                    </form>
+                </div>
+            </div>
             <h3>Joueur1</h3>
             <a href="index.php?carte=0&source=1"><img class="carte" src="cartes/rouge10.jpg" alt="revers rouge"></a>
             <a href="index.php?carte=1&source=1"><img class="carte" src="cartes/jaune04.jpg" alt="4 jaune"></a>
@@ -29,43 +31,34 @@
             <a href="index.php?carte=4&source=1"><img class="carte" src="cartes/jaune10.jpg" alt="revers jaune"></a>
             <a href="index.php?carte=5&source=1"><img class="carte" src="cartes/rouge12.jpg" alt="+2 rouge"></a>
             <a href="index.php?carte=6&source=1"><img class="carte" src="cartes/bleu03.jpg" alt="3 bleu"></a>
-          
-            
-            
-           
         </div>
-        
-        
-        
-        
-        <div id="joueur2"><div id="tapis2">
-
-            <h3>Défausse</h3>
-            <img class="carte" src="cartes/jaune11.jpg" alt="stop jaune"> <form method="post" action="index.php" style="text-align: center;">
 
 
-                <h3>Pioche</h3>                <button type="submit" name="piocherCarte2"
-                style=" background: none;border-radius: 10px;">
-                <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
-                
-            </form>
+        <div id="joueur2">
+            <div class="smallcontainer tapisJ2">
+                <div class="tas">
+                    <h3>Défausse</h3>
+                    <img class="carte" src="cartes/jaune11.jpg" alt="stop jaune">
+                    <h3>Pioche</h3>
+                    <form method="post" action="index.php" style="text-align: center;">
+                        <button type="submit" name="piocherCarte2" style=" background: #bbbb; border-radius: 10px;">
+                            <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
+
+                    </form>
+                </div>
+            </div>
+            <h3>Joueur2</h3>
+            <a href="index.php?carte=0&source=2"><img class="carte" src="cartes/jaune02.jpg" alt="2 jaune"></a>
+            <a href="index.php?carte=1&source=2"><img class="carte" src="cartes/vert10.jpg" alt="revers vert"></a>
+            <a href="index.php?carte=2&source=2"><img class="carte" src="cartes/vert05.jpg" alt="5 vert"></a>
+            <a href="index.php?carte=3&source=2"><img class="carte" src="cartes/bleu06.jpg" alt="6 bleu"></a>
+            <a href="index.php?carte=4&source=2"><img class="carte" src="cartes/bleu04.jpg" alt="4 bleu"></a>
+            <a href="index.php?carte=5&source=2"><img class="carte" src="cartes/bleu03.jpg" alt="3 bleu"></a>
+            <a href="index.php?carte=6&source=2"><img class="carte" src="cartes/bleu11.jpg" alt="stop bleu"></a>
         </div>
-        <h3>Joueur2</h3>
-        <a href="index.php?carte=0&source=2"><img class="carte" src="cartes/jaune02.jpg" alt="2 jaune"></a>
-        <a href="index.php?carte=1&source=2"><img class="carte" src="cartes/vert10.jpg" alt="revers vert"></a>
-        <a href="index.php?carte=2&source=2"><img class="carte" src="cartes/vert05.jpg" alt="5 vert"></a>
-        <a href="index.php?carte=3&source=2"><img class="carte" src="cartes/bleu06.jpg" alt="6 bleu"></a>
-        <a href="index.php?carte=4&source=2"><img class="carte" src="cartes/bleu04.jpg" alt="4 bleu"></a>
-        <a href="index.php?carte=5&source=2"><img class="carte" src="cartes/bleu03.jpg" alt="3 bleu"></a>
-        <a href="index.php?carte=6&source=2"><img class="carte" src="cartes/bleu11.jpg" alt="stop bleu"></a>
-        <form method="post" action="index.php" style="text-align: center;">
-            <button type="submit" name="piocherCarte2"
-            style=" background: none;border-radius: 10px;">
-            <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
-            
-        </form>
-    </div>
-</div>
+        </div>
+        </div>
 
-</body>
+    </body>
+
 </html>
