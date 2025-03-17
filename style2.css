@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    font-family: Arial, Tahoma, sans-serif;
+    color: #993838;
+    background-color: #999;
+}
+
+
+
+img.carte {
+    height: 60px;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+a {
+    color: #fa4;
+    text-decoration: none;
+}
+
+#table {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: -20px -20px 20px #555B;
+    border-radius: 10px;
+    margin: 20vh 10%;
+    height: 60vh;
+    padding: 20px;
+    background: url(bois2.jpg);
+}
+
+.smallcontainer {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.tas {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: start;
+    text-align: center;
+
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.tapisJ1 {
+    /* flex-wrap: wrap; =valeur par défaut*/
+    background-color: #151;
+    box-shadow: -5px -5px 10px #555B;
+    border-radius: 15px;
+    color: #fa4;
+    min-height: 80%;
+    width: 40%;
+    text-align: center;
+    border-bottom: #333 4px solid;
+    border-right: #333 4px solid;
+}
+
+.tapisJ2 {
+
+    background-color: #267;
+    box-shadow: -5px -5px 10px #555B;
+    border-radius: 15px;
+    color: #fa4;
+    min-height: 80%;
+    width: 40%;
+    text-align: center;
+    border-bottom: #333 4px solid;
+    border-right: #333 4px solid;
+}
+
+
+.cartes-joueur {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* épaisseur du tapis */
+.tapisJ1,
+.tapisJ2 {
+    box-shadow: inset -10px -10px 25px rgba(0, 0, 0, 0.5),
+        4px 4px 10px rgba(0, 0, 0, 0.3)
+}
