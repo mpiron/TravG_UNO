@@ -31,7 +31,7 @@ a {
     align-items: center;
     box-shadow: -20px -20px 20px #555B;
     border-radius: 10px;
-    margin: 20vh 10%;
+    margin: 40px 10%;
     height: 60vh;
     padding: 20px;
     background: url(bois2.jpg);
@@ -94,3 +94,6 @@ a {
     box-shadow: inset -10px -10px 25px rgba(0, 0, 0, 0.5),
         4px 4px 10px rgba(0, 0, 0, 0.3)
 }
+
+footer, nav {text-align: right;
+margin-right: 50px;}
