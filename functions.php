@@ -14,17 +14,16 @@ function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
 {
     global $mainJoueur1, $mainJoueur2, $defausse;
     if ($identiteJoueur == 1) {
-        // Comparer la couleur, la valeur ou joker
-        if (($defausse[0]['couleur'] == $mainJoueur1[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur1[$positionDansLaMain]['valeur'] or $mainJoueur1[$positionDansLaMain]['couleur'] == 'joker' or $defausse[0]['couleur'] == 'joker') and  tourJoueur(1) == true) {
+        // Comparer la couleur
+        if ($defausse[0]['couleur'] == $mainJoueur1[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur1[$positionDansLaMain]['valeur'] or $mainJoueur1[$positionDansLaMain]['couleur'] == 'joker' or $defausse[0]['couleur'] == 'joker') {
             //    echo "Carte déposée a la même couleur";
             $carteJouee = array_splice($mainJoueur1, $positionDansLaMain, 1);
             // Ajouter la carte au début de la défausse
             array_unshift($defausse, $carteJouee[0]);
-            $tour += 1;   //et jerer joker
         }
     } elseif ($identiteJoueur == 2) {
-        // Comparer la couleur, la valeur ou joker
-        if (($defausse[0]['couleur'] == $mainJoueur2[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur2[$positionDansLaMain]['valeur'] or $mainJoueur2[$positionDansLaMain]['couleur'] == 'joker' or $defausse[0]['couleur'] == 'joker') and tourJoueur(2) == true) {
+        // Comparer la couleur
+        if ($defausse[0]['couleur'] == $mainJoueur2[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur2[$positionDansLaMain]['valeur'] or $mainJoueur2[$positionDansLaMain]['couleur'] == 'joker' or $defausse[0]['couleur'] == 'joker') {
             //    echo "Carte déposée a la même couleur"; 
             $carteJouee = array_splice($mainJoueur2, $positionDansLaMain, 1);
             // Ajouter la carte au début de la défausse
@@ -32,25 +31,6 @@ function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
         }
     }
 }
-
-
-
-
-
-
-function tourJoueur($identiteJoueur)
-{
-    global $tour;
-
-    //le premier tour est initialisé à 1, le joueur 1 joue les impairs
-    if (($identiteJoueur == 1 and $tour % 2 == 1) or ($identiteJoueur == 2 and $tour % 2 == 0)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
 
 
 function afficherCarteSup($defausse)
