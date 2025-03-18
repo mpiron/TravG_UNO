@@ -14,6 +14,5 @@
 
 <body>
     <nav>
-        Ceci sera un jour le menu du site..... peu de chances.
         <a href="index.php?reset=oui"> Réinitialiser le jeu</a>
     </nav>

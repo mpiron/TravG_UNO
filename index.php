@@ -21,65 +21,66 @@ if (isset($_POST['piocherCarte1'])) {
 if (isset($_POST['piocherCarte2'])) {
     $mainJoueur2 = array_merge($mainJoueur2, array_splice($pioche, 0, 1));
 }
-
-
 ?>
 
-<div id="container">
-    <!-- <h1>Cartes cachées dans la pioche</h1> ctrl slash pr mettre en comm-->
-    <?php
-    //    afficherCartes($pioche);
-    echo ("<h3>main joueur1 </h3>");
-    afficherCartes($mainJoueur1, 1);
 
+<!-- mise en place du HTML -->
+<div id="table">
+            <div class=" tapisJ1">
+                <div class="smallcontainer tas">
+                    <div class="flex1">
+                        <h3>Défausse</h3>
 
-    ?>
-    <!-- Section pour "piocher une carte" -->
-    <form method="post" action="index.php">
-        <button type="submit" name="piocherCarte1">Piocher une carte</button>
-    </form>
-    <?php
+                        <?php afficherCarteSup($defausse);?>
 
-    echo ("<h3>main ordi = joueur2</h3>");
-    afficherCartes($mainJoueur2, 2);
+                    </div>
+                    <div class="flex1">
+                        <h3>Pioche</h3>
+                        <form method="post" action="index.php" style="text-align: center;">
+                            <button type="submit" name="piocherCarte1" style="background: #bbbb; border-radius: 10px;">
+                                <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
+                            </button>
+                        </form>
 
-    ?>
-    <!-- Section pour "piocher une carte" -->
-    <form method="post" action="index.php">
-        <button type="submit" name="piocherCarte2">Piocher une carte</button>
-    </form>
-    <?php
+                    </div>
+                </div>
+                <div>
+                    <h3>Joueur1</h3>
+                    
+                    <?php afficherCartes($mainJoueur1, 1);?>
 
+                </div>
+            </div>
+            
+            <div class=" tapisJ2">
+                <div class="tas smallcontainer">
+                    <div class="flex1">
+                        <h3>Défausse</h3>
+                    
+                        <?php  afficherCarteSup($defausse);?>
+                    
+                    </div>
+                    <div class="flex1">
+                        <h3>Pioche</h3>
+                        <form method="post" action="index.php" style="text-align: center;">
+                            <button type="submit" name="piocherCarte2" style="background: #bbbb; border-radius: 10px;">
+                                <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div>
+                    <h3>Joueur2</h3>
 
-    echo ("<h3>Pioche</h3>");
-    afficherPioche();
+                    <?php afficherCartes($mainJoueur2, 2);?>
 
+                </div>
+            </div>
+        </div>
+    </div>
 
-    // 
-    ?>
-    <!-- // Section pour "piocher une carte"
-    // <form method="post" action="index.php">
-    //     <button type="submit" name="piocherCarte">Piocher une carte</button>
-    // </form>
-    --> <?php
+    <!-- inclusion du bas de page du site -->
+    <?php include_once('footer.php'); ?>
 
-        // // Pioche une carte si le bouton vient d'être appuyé par joueur1
-        // if (isset($_POST['piocherCarte'])) {
-        //     $mainJoueur1 = array_merge($mainJoueur1, array_splice($pioche, 0, 1));
-        // }
-
-
-        echo ("<h3>Défausse</h3>");
-        afficherCarteSup($defausse);
-
-        echo $defausse[0]['couleur'];
-
-        ?>
-
-</div>
-
-<!-- inclusion du bas de page du site -->
-<?php include_once('footer.php'); ?>
 </body>
-
 </html>
