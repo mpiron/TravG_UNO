@@ -15,4 +15,6 @@
 <body>
     <nav>
         <a href="index.php?reset=oui"> Réinitialiser le jeu</a>
+        <br>c'est au tour du joueur numero: <?php $tour % 2 + 1 ?>
+        <br> Tour de jeu n°:<?php $tour ?>
     </nav>

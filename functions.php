@@ -12,22 +12,24 @@ function afficherCartes($listeCartes, $sourceCarte = "none")
 
 function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
 {
-    global $mainJoueur1, $mainJoueur2, $defausse;
+    global $mainJoueur1, $mainJoueur2, $defausse, $tour;
     if ($identiteJoueur == 1) {
         // Comparer la couleur
-        if ($defausse[0]['couleur'] == $mainJoueur1[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur1[$positionDansLaMain]['valeur'] or $mainJoueur1[$positionDansLaMain]['couleur'] == 'joker' or $defausse[0]['couleur'] == 'joker') {
+        if (($defausse[0]['couleur'] == $mainJoueur1[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur1[$positionDansLaMain]['valeur'] or $mainJoueur1[$positionDansLaMain]['couleur'] == 'joker' or $defausse[0]['couleur'] == 'joker') and ($tour % 2 + 1 == 1)) {
             //    echo "Carte déposée a la même couleur";
             $carteJouee = array_splice($mainJoueur1, $positionDansLaMain, 1);
             // Ajouter la carte au début de la défausse
             array_unshift($defausse, $carteJouee[0]);
+            $tour += 1;
         }
     } elseif ($identiteJoueur == 2) {
         // Comparer la couleur
-        if ($defausse[0]['couleur'] == $mainJoueur2[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur2[$positionDansLaMain]['valeur'] or $mainJoueur2[$positionDansLaMain]['couleur'] == 'joker' or $defausse[0]['couleur'] == 'joker') {
+        if (($defausse[0]['couleur'] == $mainJoueur2[$positionDansLaMain]['couleur'] or $defausse[0]['valeur'] == $mainJoueur2[$positionDansLaMain]['valeur'] or $mainJoueur2[$positionDansLaMain]['couleur'] == 'joker' or $defausse[0]['couleur'] == 'joker') and ($tour % 2 + 1 == 1)) {
             //    echo "Carte déposée a la même couleur"; 
             $carteJouee = array_splice($mainJoueur2, $positionDansLaMain, 1);
             // Ajouter la carte au début de la défausse
             array_unshift($defausse, $carteJouee[0]);
+            $tour += 1;
         }
     }
 }
