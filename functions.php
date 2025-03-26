@@ -35,10 +35,47 @@ function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
 }
 
 
-function afficherCarteSup($defausse)
-{
-    echo '<img class="carte" src="cartes/' . $defausse[0]['image'] . '" alt="' . $defausse[0]['nom'] . '">';
+
+
+
+function afficherCarteSup($defausse) {
+    
+    // tant que la première carte est une carte spéciale, mélanger les cartes 
+    while ($defausse[0]['nom'] == 'revers jaune' or 
+           $defausse[0]['nom'] == 'stop jaune' or 
+           $defausse[0]['nom'] == '+2 jaune' or 
+           $defausse[0]['nom'] == 'revers bleu' or 
+           $defausse[0]['nom'] == 'stop bleu' or 
+           $defausse[0]['nom'] == '+2 bleu' or 
+           $defausse[0]['nom'] == 'revers vert' or 
+           $defausse[0]['nom'] == 'stop vert' or 
+           $defausse[0]['nom'] == '+2 vert' or 
+           $defausse[0]['nom'] == 'revers rouge' or 
+           $defausse[0]['nom'] == 'stop rouge' or 
+           $defausse[0]['nom'] == '+2 rouge' or 
+           $defausse[0]['nom'] == 'changement' or 
+           $defausse[0]['nom'] == 'Joker +4') { 
+
+        shuffle($_SESSION['deckDepart']); 
+    } 
+    
+    echo '<img class="carte" src="cartes/' . $defausse[0]['image'] . '" alt="' . $defausse[0]['nom'] . '">'; 
 }
+
+
+
+
+// function afficherCarteSup($defausse) {
+    
+//     // tant que la première carte est une carte spéciale, mélanger les cartes 
+//     while ($defausse[0]['nom'] == ['revers jaune', 'stop jaune', '+2 jaune', 'revers bleu', 'stop bleu', '+2 bleu', 'revers vert', 'stop vert', '+2 vert', 'revers rouge', 'stop rouge', '+2 rouge', 'changement', 'Joker +4']) { 
+//         shuffle($_SESSION['deckDepart']); 
+//     }
+//     echo '<img class="carte" src="cartes/' . $defausse[0]['image'] . '" alt="' . $defausse[0]['nom'] . '">'; 
+// }
+
+
+
 
 
 function afficherPioche()
