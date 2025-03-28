@@ -38,40 +38,46 @@ function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
 
 
 
-function afficherCarteSup($defausse) {
-    
-    // tant que la première carte est une carte spéciale, mélanger les cartes 
-    while ($defausse[0]['nom'] == 'revers jaune' or 
-           $defausse[0]['nom'] == 'stop jaune' or 
-           $defausse[0]['nom'] == '+2 jaune' or 
-           $defausse[0]['nom'] == 'revers bleu' or 
-           $defausse[0]['nom'] == 'stop bleu' or 
-           $defausse[0]['nom'] == '+2 bleu' or 
-           $defausse[0]['nom'] == 'revers vert' or 
-           $defausse[0]['nom'] == 'stop vert' or 
-           $defausse[0]['nom'] == '+2 vert' or 
-           $defausse[0]['nom'] == 'revers rouge' or 
-           $defausse[0]['nom'] == 'stop rouge' or 
-           $defausse[0]['nom'] == '+2 rouge' or 
-           $defausse[0]['nom'] == 'changement' or 
-           $defausse[0]['nom'] == 'Joker +4') { 
+function afficherCarteSup($defausse, $pioche)
+{
 
-        shuffle($_SESSION['deckDepart']); 
-    } 
-    
-    echo '<img class="carte" src="cartes/' . $defausse[0]['image'] . '" alt="' . $defausse[0]['nom'] . '">'; 
+    // tant que la première carte est une carte spéciale, mélanger les cartes 
+    while (
+        $defausse[0]['nom'] == 'revers jaune'
+        or  $defausse[0]['nom'] == 'stop jaune' or
+        $defausse[0]['nom'] == '+2 jaune' or
+        $defausse[0]['nom'] == 'revers bleu' or
+        $defausse[0]['nom'] == 'stop bleu' or
+        $defausse[0]['nom'] == '+2 bleu' or
+        $defausse[0]['nom'] == 'revers vert' or
+        $defausse[0]['nom'] == 'stop vert' or
+        $defausse[0]['nom'] == '+2 vert' or
+        $defausse[0]['nom'] == 'revers rouge' or
+        $defausse[0]['nom'] == 'stop rouge' or
+        $defausse[0]['nom'] == '+2 rouge' or
+        $defausse[0]['nom'] == 'changement' or
+        $defausse[0]['nom'] == 'Joker +4'
+    ) {
+        $message = $defausse[0]['nom'];
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        $defausse = array_merge($defausse, array_splice($pioche, 0, 1));
+    }
+
+    echo '<img class="carte" src="cartes/' . $defausse[0]['image'] . '" alt="' . $defausse[0]['nom'] . '">';
+    return $defausse;
 }
 
 
 
 
-// function afficherCarteSup($defausse) {
-    
+// function afficherCarteSup($defausse)
+// {
+
 //     // tant que la première carte est une carte spéciale, mélanger les cartes 
-//     while ($defausse[0]['nom'] == ['revers jaune', 'stop jaune', '+2 jaune', 'revers bleu', 'stop bleu', '+2 bleu', 'revers vert', 'stop vert', '+2 vert', 'revers rouge', 'stop rouge', '+2 rouge', 'changement', 'Joker +4']) { 
-//         shuffle($_SESSION['deckDepart']); 
+//     while ($defausse[0]['nom'] == ['revers jaune', 'stop jaune', '+2 jaune', 'revers bleu', 'stop bleu', '+2 bleu', 'revers vert', 'stop vert', '+2 vert', 'revers rouge', 'stop rouge', '+2 rouge', 'changement', 'Joker +4']) {
+//         shuffle($_SESSION['deckDepart']);
 //     }
-//     echo '<img class="carte" src="cartes/' . $defausse[0]['image'] . '" alt="' . $defausse[0]['nom'] . '">'; 
+//     echo '<img class="carte" src="cartes/' . $defausse[0]['image'] . '" alt="' . $defausse[0]['nom'] . '">';
 // }
 
 
@@ -99,3 +105,9 @@ function distribuerCartes($cartes)
     $defausse = array_splice($cartes, 0, 1);  //on retourne la 1er carte de la pioche
     $pioche = $cartes; //les cartes qui restent se retrouvent dans la pioche
 }
+
+
+
+
+// faire fonction si pioche vide, reprendre les cartes qui 
+// sont dans defausse et remettre dans pioche (comme dans jeu uno qd on a p;us de cartes a piocher)

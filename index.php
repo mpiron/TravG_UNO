@@ -1,4 +1,3 @@
-
 <?php
 // <!-- distribuer / piocher / session -->
 include_once('session.php');
@@ -24,62 +23,63 @@ if (isset($_POST['piocherCarte2'])) {
 ?>
 
 
-    <!-- mise en place du HTML -->
-    <div id="table">
-        <div class=" tapisJ1">
-            <div class="smallcontainer tas">
-                <div class="flex1">
-                    <h3>Défausse</h3>
+<!-- mise en place du HTML -->
+<div id="table">
+    <div class=" tapisJ1">
+        <div class="smallcontainer tas">
+            <div class="flex1">
+                <h3>Défausse</h3>
 
-                    <?php afficherCarteSup($defausse);?>
+                <?php $defausse = afficherCarteSup($defausse, $pioche); ?>
 
-                </div>
-                <div class="flex1">
-                    <h3>Pioche</h3>
-                    <form method="post" action="index.php" style="text-align: center;">
-                        <button type="submit" name="piocherCarte1" style="background: #bbbb; border-radius: 10px;">
-                            <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
-                        </button>
-                    </form>
-
-                </div>
             </div>
-            <div>
-                <h3>Joueur1</h3>
-                
-                <?php afficherCartes($mainJoueur1, 1);?>
+            <div class="flex1">
+                <h3>Pioche</h3>
+                <form method="post" action="index.php" style="text-align: center;">
+                    <button type="submit" name="piocherCarte1" style="background: #bbbb; border-radius: 10px;">
+                        <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
+                    </button>
+                </form>
 
             </div>
         </div>
-                
-        <div class=" tapisJ2">
-            <div class="tas smallcontainer">
-                <div class="flex1">
-                    <h3>Défausse</h3>
-                
-                    <?php  afficherCarteSup($defausse);?>
-                
-                </div>
-                <div class="flex1">
-                    <h3>Pioche</h3>
-                    <form method="post" action="index.php" style="text-align: center;">
-                        <button type="submit" name="piocherCarte2" style="background: #bbbb; border-radius: 10px;">
-                            <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div>
-                <h3>Joueur2</h3>
+        <div>
+            <h3>Joueur1</h3>
 
-                <?php afficherCartes($mainJoueur2, 2);?>
+            <?php afficherCartes($mainJoueur1, 1); ?>
 
-            </div>
         </div>
     </div>
 
-    <!-- inclusion du bas de page du site -->
-    <?php include_once('footer.php'); ?>
+    <div class=" tapisJ2">
+        <div class="tas smallcontainer">
+            <div class="flex1">
+                <h3>Défausse</h3>
+
+                <?php $defausse = afficherCarteSup($defausse, $pioche); ?>
+
+            </div>
+            <div class="flex1">
+                <h3>Pioche</h3>
+                <form method="post" action="index.php" style="text-align: center;">
+                    <button type="submit" name="piocherCarte2" style="background: #bbbb; border-radius: 10px;">
+                        <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div>
+            <h3>Joueur2</h3>
+
+            <?php afficherCartes($mainJoueur2, 2); ?>
+
+        </div>
+    </div>
+</div>
+
+<!-- inclusion du bas de page du site -->
+<?php include_once('footer.php'); ?>
 
 </body>
+
 </html>
