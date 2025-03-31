@@ -41,7 +41,7 @@ function jouerCarte($positionDansLaMain, $identiteJoueur = "none")
 function afficherCarteSup($defausse, $pioche)
 {
 
-    // tant que la première carte est une carte spéciale, mélanger les cartes 
+    // tant que la première carte est une carte spéciale 
     while (
         $defausse[0]['nom'] == 'revers jaune'
         or  $defausse[0]['nom'] == 'stop jaune' or
@@ -58,14 +58,26 @@ function afficherCarteSup($defausse, $pioche)
         $defausse[0]['nom'] == 'changement' or
         $defausse[0]['nom'] == 'Joker +4'
     ) {
-        $message = $defausse[0]['nom'];
-        echo "<script type='text/javascript'>alert('$message');</script>";
-        $defausse = array_merge($defausse, array_splice($pioche, 0, 1));
+
+
+ // Ajouter carte de la pioche au-dessus de la défausse, si pioche contient au moins une carte(pas vide)
+ if (!empty($pioche)) {
+    $defausse = array_merge([$pioche[0]], $defausse); // Ajoute une carte de la pioche à la défausse
+    array_shift($pioche); // Enlever carte ajoutée de la pioche
+} 
+
+
+        // $message = $defausse[0]['nom'];
+        // echo "<script type='text/javascript'>alert('$message');</script>";
+        // $defausse = array_merge($defausse, array_splice($pioche, 0, 1));
+
     }
 
     echo '<img class="carte" src="cartes/' . $defausse[0]['image'] . '" alt="' . $defausse[0]['nom'] . '">';
     return $defausse;
 }
+
+
 
 
 
@@ -79,9 +91,6 @@ function afficherCarteSup($defausse, $pioche)
 //     }
 //     echo '<img class="carte" src="cartes/' . $defausse[0]['image'] . '" alt="' . $defausse[0]['nom'] . '">';
 // }
-
-
-
 
 
 function afficherPioche()
@@ -104,6 +113,37 @@ function distribuerCartes($cartes)
     }
     $defausse = array_splice($cartes, 0, 1);  //on retourne la 1er carte de la pioche
     $pioche = $cartes; //les cartes qui restent se retrouvent dans la pioche
+
+    if (!empty($pioche)) {
+        reremplirPioche();
+    }
+
+}
+
+
+
+
+function reremplirPioche()
+{
+    global $pioche, $defausse;
+
+    // Vérifier si pioche est vide
+    if (empty($pioche)) {
+        // Vérifier si y a cartes dans défausse (au moins 2 pr être sûr)
+        if (count($defausse) > 1) {
+            // Récupérer toutes les cartes sauf la première (celle qui est au-dessus donc la 0)
+            $defausseReDansPioche = array_slice($defausse, 1); // Prend tout sauf 0
+
+            // Mélanger cartes récupérées avant de les remettre dans pioche
+            shuffle($defausseReDansPioche);
+
+            // Remettre ces cartes dans la pioche
+            $pioche = $defausseReDansPioche;
+
+            // Garder que la première carte de la défausse
+            $defausse = array_slice($defausse, 0, 1);
+        }             //prend tab $defausse, commence à 0 (première carte), prend 1 él (donc que la prem carte)
+    }
 }
 
 
