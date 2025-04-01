@@ -7,6 +7,7 @@
 // $mainJoueur2 (7 cartes pour l'ordi)
 // $pioche     (le reste du jeu)
 // $defausse   première carte après distribution aux joueurs
+// $tour       variable entiere qui permet de déterminer qui doit jouer.
 // 
 
 if (!isset($_SESSION['deckDepart'])) {
@@ -119,7 +120,10 @@ if (!isset($_SESSION['deckDepart'])) {
     $mainjoueur1 = $_SESSION['mainJoueur1'] = [];
     $mainjoueur2 = $_SESSION['mainJoueur2'] = [];
     $defausse = $_SESSION['defausse'] = [];
-    $tour = $_SESSION['tour'] = 0;      // pour utiliser modulo 2, nous ajouterons 1 après opération car rep sera 0 ou 1 mais on veut 1 ou 2
+    $tour = $_SESSION['tour'] = 0;     
+    // Initialisation du tour à 0. Nous utiliserons le modulo 2 pour alterner entre les joueurs.
+    // Après chaque opération, nous ajouterons 1 au résultat du modulo pour obtenir 1 ou 2 
+    // (au lieu de 0 ou 1).
     distribuerCartes($_SESSION['deckDepart']);
 } else {
     $mainJoueur1 = $_SESSION['mainJoueur1'];

@@ -7,6 +7,5 @@
     $_SESSION['mainJoueur2'] = $mainJoueur2;
     $_SESSION['pioche'] = $pioche;
     $_SESSION['defausse'] = $defausse;
-    $_SESSION['tour'] = $tour;
     ?>
 </footer>
