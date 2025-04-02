@@ -49,8 +49,8 @@ include_once('header.php');
 
 
 ?>
- 
- <!-- débuggage à effacer par la suite
+
+<!-- débuggage à effacer par la suite
  <script>
     // Vérifier si c'est le tour du joueur 1
     alert("joueur1? " + (true && 1 == <?php echo $tour % 2 + 1; ?>));
