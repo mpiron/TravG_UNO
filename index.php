@@ -36,7 +36,7 @@ if (isset($_POST['piocherCarte2'])) {
 }
 
 // changer de joueur si le joueur vient de passer
-if (isset($_GET['but']) && $_GET['but'] == 'passer') {
+if (isset($_POST['passerJoueur1']) or isset($_POST['passerJoueur2'])) {
     $tour += 1;
     // Mettre à jour les variables de session
     // $_SESSION['tour'] = $tour;
@@ -70,11 +70,26 @@ include_once('header.php');
             </div>
             <div class="flex1">
                 <h3>Pioche</h3>
-                <form method="post" action="index.php" style="text-align: center;">
-                    <button type="submit" name="piocherCarte1" style="background: #bbbb; border-radius: 10px;">
-                        <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
-                    </button>
-                </form>
+
+                <?php
+                // Si bouton appuyé, cacher formulaire
+                if (!isset($_POST['piocherCarte1'])) {
+                ?>
+                    <form method="post" action="index.php" style="text-align: center;">
+                        <button type="submit" name="piocherCarte1" style="background: #bbbb; border-radius: 10px;">
+                            <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
+                        </button>
+                    </form><?php
+                        } else {
+                            ?><form method="post" action="index.php" style="text-align: center;">
+                        <button type="submit" name="passerJoueur1" style="background: #bbbb; border-radius: 10px;">
+                            <img src="cartes/pioche.jpg" alt="Passer" class="carte"><br> passer
+                        </button>
+                    </form>
+                <?php
+                        }
+                ?>
+
 
             </div>
         </div>
@@ -82,7 +97,7 @@ include_once('header.php');
             <h3>Joueur1</h3>
 
             <?php afficherCartes($mainJoueur1, 1); ?>
-            <p><a href="index.php?joueur=1&amp;but=passer">passer</a></p>
+            <!-- code enlevé        <p><a href="index.php?joueur=1&amp;but=passer">passer</a></p>      -->
         </div>
     </div>
 
@@ -96,11 +111,30 @@ include_once('header.php');
             </div>
             <div class="flex1">
                 <h3>Pioche</h3>
-                <form method="post" action="index.php" style="text-align: center;">
-                    <button type="submit" name="piocherCarte2" style="background: #bbbb; border-radius: 10px;">
-                        <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
-                    </button>
-                </form>
+
+
+                <?php
+                // Si bouton appuyé, cacher formulaire
+                if (!isset($_POST['piocherCarte2'])) {
+                ?>
+                    <form method="post" action="index.php" style="text-align: center;">
+                        <button type="submit" name="piocherCarte2" style="background: #bbbb; border-radius: 10px;">
+                            <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
+                        </button>
+                    </form><?php
+                        } else {
+                            ?><form method="post" action="index.php" style="text-align: center;">
+                        <button type="submit" name="passerJoueur2" style="background: #bbbb; border-radius: 10px;">
+                            <img src="cartes/pioche.jpg" alt="Passer" class="carte"><br> passer
+                        </button>
+                    </form>
+                <?php
+                        }
+                ?>
+
+
+
+
             </div>
 
         </div>
@@ -108,7 +142,7 @@ include_once('header.php');
             <h3>Joueur2</h3>
 
             <?php afficherCartes($mainJoueur2, 2); ?>
-            <p><a href="index.php?joueur=2&amp;but=passer">passer</a></p>
+            <!-- code enlevé    <p><a href="index.php?joueur=2&amp;but=passer">passer</a></p>  -->
         </div>
     </div>
 </div>
