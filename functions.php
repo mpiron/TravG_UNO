@@ -49,13 +49,13 @@ function jouerCarte($positionDansLaMain, $identiteJoueur)
             //debut verif ce que carte fait (effet carte) 
             if ($defausse[0]['nom'] == 'revers rouge') {
                 echo "<br>sens est inversé";
-                $tour *= -1; // Inverse le sens du tour
-                // $identiteJoueur == 2 && $tour % 2 == 1;
+                $tour *= -1; // Inverse le sens du tour 
             } elseif ($defausse[0]['nom'] == '+2 rouge' or $defausse[0]['nom'] == '+2 vert' or $defausse[0]['nom'] == '+2 bleu' or $defausse[0]['nom'] == '+2 jaune') {
                 echo "<br>joueur suivant doit piocher 2 cartes";
-                $mainJoueur2 = array_merge($mainJoueur2, array_splice($pioche, 0, 2));
+             //   $mainJoueur2 = array_merge($mainJoueur2, array_splice($pioche, 0, 2));
             } elseif ($defausse[0]['nom'] == 'Joker +4') {
-                echo "<br>joueur suivant doit piocher 4 cartes et je peux changer de couleur";
+                echo "<br>joueur suivant doit piocher 4 cartes et je peux changer de couleur"; 
+             //   $mainJoueur2 = array_merge($mainJoueur2, array_splice($pioche, 0, 4)); 
             } elseif ($defausse[0]['nom'] == 'changement') {
                 echo "<br>je peux changer la couleur";
             } elseif ($defausse[0]['nom'] == 'stop rouge' or $defausse[0]['nom'] == 'stop vert' or $defausse[0]['nom'] == 'stop bleu' or $defausse[0]['nom'] == 'stop jaune') {
