@@ -5,13 +5,11 @@
 }
 
 
-
 body {
     font-family: Arial, Tahoma, sans-serif;
-    color: #993838;
+    color: #ffffff;
     background-color: #999;
 }
-
 
 
 img.carte {
@@ -20,10 +18,12 @@ img.carte {
     padding: 2px;
 }
 
+
 a {
     color: #fa4;
     text-decoration: none;
 }
+
 
 #table {
     display: flex;
@@ -37,23 +37,26 @@ a {
     background: url(bois2.jpg);
 }
 
+
 .smallcontainer {
     padding: 10px;
     border-radius: 10px;
 }
+
 
 .tas {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: start;
-    text-align: center;
-
+    text-align: center; 
 }
+
 
 .flex1 {
     flex: 1;
 }
+
 
 .tapisJ1 {
     /* flex-wrap: wrap; =valeur par défaut*/
@@ -68,8 +71,8 @@ a {
     border-right: #333 4px solid;
 }
 
-.tapisJ2 {
 
+.tapisJ2 { 
     background-color: #267;
     box-shadow: -5px -5px 10px #555B;
     border-radius: 15px;
@@ -88,12 +91,21 @@ a {
     flex-wrap: wrap;
 }
 
+
 /* épaisseur du tapis */
 .tapisJ1,
 .tapisJ2 {
     box-shadow: inset -10px -10px 25px rgba(0, 0, 0, 0.5),
-        4px 4px 10px rgba(0, 0, 0, 0.3)
+    4px 4px 10px rgba(0, 0, 0, 0.3)
 }
 
-footer, nav {text-align: right;
-margin-right: 50px;}
+
+.actif{box-shadow: 0 0 300px yellow;}
+
+footer, nav { 
+    text-align: right; 
+    margin-right: 50px; 
+} 
+
+
+

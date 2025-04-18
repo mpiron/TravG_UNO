@@ -60,7 +60,7 @@ include_once('header.php');
  -->
 <!-- mise en place du HTML -->
 <div id="table">
-    <div class=" tapisJ1">
+    <div class=" tapisJ1 <?php echo ($tour % 2 == 0) ? 'actif' : ''; ?> ">
         <div class="smallcontainer tas">
             <div class="flex1">
                 <h3>Défausse</h3>
@@ -72,23 +72,31 @@ include_once('header.php');
                 <h3>Pioche</h3>
 
                 <?php
-                // Si bouton appuyé, cacher formulaire
-                if (!isset($_POST['piocherCarte1'])) {
+                global $identiteJoueur;
+                //$identiteJoueur == 1 &&  
+                if ($tour % 2 == 0) {
+
+                    // Si bouton appuyé, cacher formulaire
+                    if (!isset($_POST['piocherCarte1'])) {
                 ?>
-                    <form method="post" action="index.php" style="text-align: center;">
-                        <button type="submit" name="piocherCarte1" style="background: #bbbb; border-radius: 10px;">
-                            <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
-                        </button>
-                    </form><?php
-                        } else {
-                            ?><form method="post" action="index.php" style="text-align: center;">
-                        <button type="submit" name="passerJoueur1" style="background: #bbbb; border-radius: 10px;">
-                            <img src="cartes/pioche.jpg" alt="Passer" class="carte"><br> passer
-                        </button>
-                    </form>
-                <?php
-                        }
-                ?>
+                        <form method="post" action="index.php" style="text-align: center;">
+                            <button type="submit" name="piocherCarte1" style="background: #bbbb; border-radius: 10px;">
+                                <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
+                            </button>
+                        </form><?php
+                            } else {
+                                ?><form method="post" action="index.php" style="text-align: center;">
+                            <button type="submit" name="passerJoueur1" style="background: #bbbb; border-radius: 10px;">
+                                <img src="cartes/passer.jpg" alt="Passer" class="carte"><br> passer
+                            </button>
+                        </form>
+                    <?php
+                            }
+                        } else { ?>
+                    <button type="submit" name="piocherCarte1" style="background: #bbbb; border-radius: 10px;">
+                        <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> ✿ ☘ ✪
+                    <?php        }
+                    ?>
 
 
             </div>
@@ -97,11 +105,10 @@ include_once('header.php');
             <h3>Joueur1</h3>
 
             <?php afficherCartes($mainJoueur1, 1); ?>
-            <!-- code enlevé        <p><a href="index.php?joueur=1&amp;but=passer">passer</a></p>      -->
         </div>
     </div>
 
-    <div class=" tapisJ2">
+    <div class=" tapisJ2 <?php echo ($tour % 2 == 1) ? 'actif' : ''; ?>"> <!--peut enlever text affiché en haut disant tour joueur de joueur (à verifier)-->
         <div class="tas smallcontainer">
             <div class="flex1">
                 <h3>Défausse</h3>
@@ -112,27 +119,32 @@ include_once('header.php');
             <div class="flex1">
                 <h3>Pioche</h3>
 
-
                 <?php
-                // Si bouton appuyé, cacher formulaire
-                if (!isset($_POST['piocherCarte2'])) {
-                ?>
-                    <form method="post" action="index.php" style="text-align: center;">
-                        <button type="submit" name="piocherCarte2" style="background: #bbbb; border-radius: 10px;">
-                            <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
-                        </button>
-                    </form><?php
-                        } else {
-                            ?><form method="post" action="index.php" style="text-align: center;">
-                        <button type="submit" name="passerJoueur2" style="background: #bbbb; border-radius: 10px;">
-                            <img src="cartes/pioche.jpg" alt="Passer" class="carte"><br> passer
-                        </button>
-                    </form>
-                <?php
-                        }
-                ?>
+                global $identiteJoueur;
+                //$identiteJoueur == 2 &&  
+                if ($tour % 2 == 1) {
 
-
+                    // Si bouton appuyé, cacher formulaire
+                    if (!isset($_POST['piocherCarte2'])) {
+                ?>
+                        <form method="post" action="index.php" style="text-align: center;">
+                            <button type="submit" name="piocherCarte2" style="background: #bbbb; border-radius: 10px;">
+                                <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> piocher
+                            </button>
+                        </form><?php
+                            } else {
+                                ?><form method="post" action="index.php" style="text-align: center;">
+                            <button type="submit" name="passerJoueur2" style="background: #bbbb; border-radius: 10px;">
+                                <img src="cartes/passer.jpg" alt="Passer" class="carte"><br> passer
+                            </button>
+                        </form>
+                    <?php
+                            }
+                        } else { ?>
+                    <button type="submit" name="piocherCarte1" style="background: #bbbb; border-radius: 10px;">
+                        <img src="cartes/pioche.jpg" alt="Piocher une carte" class="carte"><br> ✿ ☘ ✪
+                    <?php        }
+                    ?>
 
 
             </div>
@@ -142,7 +154,6 @@ include_once('header.php');
             <h3>Joueur2</h3>
 
             <?php afficherCartes($mainJoueur2, 2); ?>
-            <!-- code enlevé    <p><a href="index.php?joueur=2&amp;but=passer">passer</a></p>  -->
         </div>
     </div>
 </div>

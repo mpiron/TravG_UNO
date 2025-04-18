@@ -32,9 +32,9 @@ function afficherCartes($listeCartes, $sourceCarte)
  */
 function jouerCarte($positionDansLaMain, $identiteJoueur)
 {
-    global $mainJoueur1, $mainJoueur2, $defausse, $tour;
+    global $mainJoueur1, $mainJoueur2, $defausse, $tour, $pioche;
     if ($identiteJoueur == 1 && $tour % 2 == 0) {
-        echo ("joueur 1 a joué");
+        //    echo ("joueur 1 a joué");
         // Comparer la couleur et valeur
         if (($defausse[0]['couleur'] == $mainJoueur1[$positionDansLaMain]['couleur']
             or $defausse[0]['valeur'] == $mainJoueur1[$positionDansLaMain]['valeur']
@@ -47,30 +47,35 @@ function jouerCarte($positionDansLaMain, $identiteJoueur)
             $tour += 1;
 
             //debut verif ce que carte fait (effet carte) 
-            if ($defausse[0]['nom'] == 'revers rouge') {
-                echo "<br>sens est inversé";
-                $tour *= -1; // Inverse le sens du tour 
+            if ($defausse[0]['nom'] == 'revers rouge' or $defausse[0]['nom'] == 'revers vert' or $defausse[0]['nom'] == 'revers bleu' or $defausse[0]['nom'] == 'revers jaune') {
+                //    echo "<br>sens est inversé";
+                $tour += 1; //que ça car ne joue qu'à 2 pr le moment 
             } elseif ($defausse[0]['nom'] == '+2 rouge' or $defausse[0]['nom'] == '+2 vert' or $defausse[0]['nom'] == '+2 bleu' or $defausse[0]['nom'] == '+2 jaune') {
-                echo "<br>joueur suivant doit piocher 2 cartes";
-             //   $mainJoueur2 = array_merge($mainJoueur2, array_splice($pioche, 0, 2));
+                //    echo "<br>joueur suivant doit piocher 2 cartes";
+                $mainJoueur2 = array_merge($mainJoueur2, array_splice($pioche, 0, 2));
             } elseif ($defausse[0]['nom'] == 'Joker +4') {
-                echo "<br>joueur suivant doit piocher 4 cartes et je peux changer de couleur"; 
-             //   $mainJoueur2 = array_merge($mainJoueur2, array_splice($pioche, 0, 4)); 
+                //    echo "<br>joueur suivant doit piocher 4 cartes et je peux changer de couleur";
+                $mainJoueur2 = array_merge($mainJoueur2, array_splice($pioche, 0, 4));
             } elseif ($defausse[0]['nom'] == 'changement') {
-                echo "<br>je peux changer la couleur";
+                //    echo "<br>je peux changer la couleur";
             } elseif ($defausse[0]['nom'] == 'stop rouge' or $defausse[0]['nom'] == 'stop vert' or $defausse[0]['nom'] == 'stop bleu' or $defausse[0]['nom'] == 'stop jaune') {
-                echo "<br>passer tour du joueur suivant";
+                //    echo "<br>passer tour du joueur suivant";
                 $tour += 1;
             } else {
-                echo ("<br>carte normale");
+                //    echo ("<br>carte normale");
             }
             //fin verification ce que carte fait 
 
         } else {
             echo ("<br>les conditions ne sont pas bonnes<br>");
         }
+
+        // Si que 1 carte dans main joueur2, écrire gagné 
+        if (count($mainJoueur1) == 0) {
+            echo "Gagné";
+        }
     } elseif ($identiteJoueur == 2 && $tour % 2 == 1) {
-        echo ("joueur 2 a joué");
+        //    echo ("joueur 2 a joué");
         // Comparer la couleur et valeur
         if (($defausse[0]['couleur'] == $mainJoueur2[$positionDansLaMain]['couleur']
             or $defausse[0]['valeur'] == $mainJoueur2[$positionDansLaMain]['valeur']
@@ -81,8 +86,34 @@ function jouerCarte($positionDansLaMain, $identiteJoueur)
             // Ajouter la carte au début de la défausse
             array_unshift($defausse, $carteJouee[0]);
             $tour += 1;
+
+            //debut verif ce que carte fait (effet carte) 
+            if ($defausse[0]['nom'] == 'revers rouge' or $defausse[0]['nom'] == 'revers vert' or $defausse[0]['nom'] == 'revers bleu' or $defausse[0]['nom'] == 'revers jaune') {
+                //    echo "<br>sens est inversé";
+                $tour += 1; //que ça car ne joue qu'à 2 pr le moment 
+            } elseif ($defausse[0]['nom'] == '+2 rouge' or $defausse[0]['nom'] == '+2 vert' or $defausse[0]['nom'] == '+2 bleu' or $defausse[0]['nom'] == '+2 jaune') {
+                //    echo "<br>joueur suivant doit piocher 2 cartes";
+                $mainJoueur1 = array_merge($mainJoueur1, array_splice($pioche, 0, 2));
+            } elseif ($defausse[0]['nom'] == 'Joker +4') {
+                //    echo "<br>joueur suivant doit piocher 4 cartes et je peux changer de couleur";
+                $mainJoueur1 = array_merge($mainJoueur1, array_splice($pioche, 0, 4));
+            } elseif ($defausse[0]['nom'] == 'changement') {
+                //    echo "<br>je peux changer la couleur";
+            } elseif ($defausse[0]['nom'] == 'stop rouge' or $defausse[0]['nom'] == 'stop vert' or $defausse[0]['nom'] == 'stop bleu' or $defausse[0]['nom'] == 'stop jaune') {
+                //    echo "<br>passer tour du joueur suivant";
+                $tour += 1;
+            } else {
+                //    echo ("<br>carte normale");
+            }
+            //fin verification ce que carte fait 
+
         } else {
             echo ("<br>les conditions ne sont pas bonnes<br>");
+        }
+
+        // Si que 1 carte dans main joueur2, écrire uno 
+        if (count($mainJoueur2) == 0) {
+            echo "Gangé";
         }
     }
 }
