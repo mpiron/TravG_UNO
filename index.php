@@ -107,8 +107,8 @@ include_once('header.php');
             <?php afficherCartes($mainJoueur1, 1); ?>
         </div>
     </div>
-
-    <div class=" tapisJ2 <?php echo ($tour % 2 == 1) ? 'actif' : ''; ?>"> <!--peut enlever text affiché en haut disant tour joueur de joueur (à verifier)-->
+                           <!-- actif pour dire celui qui joue -->
+    <div class=" tapisJ2 <?php echo ($tour % 2 == 1) ? 'actif' : ''; ?>"> 
         <div class="tas smallcontainer">
             <div class="flex1">
                 <h3>Défausse</h3>
@@ -118,7 +118,7 @@ include_once('header.php');
             </div>
             <div class="flex1">
                 <h3>Pioche</h3>
-
+                                                                    <!-- ctrl + touche / pour comm html -->
                 <?php
                 global $identiteJoueur;
                 //$identiteJoueur == 2 &&  

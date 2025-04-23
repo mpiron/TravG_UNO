@@ -70,9 +70,12 @@ function jouerCarte($positionDansLaMain, $identiteJoueur)
             echo ("<br>les conditions ne sont pas bonnes<br>");
         }
 
-        // Si que 1 carte dans main joueur2, écrire gagné 
+        // Si que 0 carte dans main joueur2 
         if (count($mainJoueur1) == 0) {
             echo "Gagné";
+            header('Location: gagne.php'); 
+            
+            exit(); 
         }
     } elseif ($identiteJoueur == 2 && $tour % 2 == 1) {
         //    echo ("joueur 2 a joué");
@@ -111,9 +114,14 @@ function jouerCarte($positionDansLaMain, $identiteJoueur)
             echo ("<br>les conditions ne sont pas bonnes<br>");
         }
 
-        // Si que 1 carte dans main joueur2, écrire uno 
+        // Si que 0 carte dans main joueur2 
         if (count($mainJoueur2) == 0) {
-            echo "Gangé";
+            echo "Gangé"; 
+
+            header('Location: gagne.php'); 
+            exit(); 
+
+            
         }
     }
 }
