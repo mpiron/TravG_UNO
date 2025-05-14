@@ -1,16 +1,23 @@
+<?php
+include_once('session.php');
+include_once('functions.php');
+include_once('variables.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire</title>
+    <title>Palmarès</title>
 </head>
 
 
 <style>
     table {
-        width: 800px;
+        width: 1000px;
         margin: auto;
         border-collapse: collapse;
         /* pour ne pas avoir un tab à deux lignes */
@@ -22,11 +29,82 @@
         padding: 10px;
         /* Ajoute de l'espace autour du contenu des cellules */
         text-align: left;
+        background-color: white;
     }
 
     th {
-        background-color: #f2f2f2;
-        /* Facultatif : couleur de fond des en-têtes */
+        background-color: rgb(60, 61, 119);
+        /* couleur de fond des en-têtes */
+        color: white;
+    }
+
+
+    /* Style général */
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(lightblue, blue);
+        text-align: center;
+        height: 100vh;
+        /*vh c'est vertical height*/
+        display: flex;
+        /*pr centrer au milieu*/
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        /* pr afficher él les uns en-dessous des autes */
+    }
+
+    h1 {
+        color: white;
+        font-size: 3.5em;
+        margin: 5;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        /* Ombrr pour titre */
+        font-weight: bold;
+        transition: transform 0.3s ease, color 0.3s ease;
+        /* survole plus fluidement */
+
+    }
+
+    h1:hover {
+        color: #ffcc00;
+        /* Change de couleur qd du survol */
+    }
+
+    th:hover {
+        color: #ffcc00;
+    }
+
+    button {
+        background-color: rgb(60, 61, 119);
+        color: white;
+        border: none;
+        padding: 13px 28px;
+        font-size: 1.2em;
+        /* cursor: pointer; */
+        /* qd curseur dessus, change de forme et pointe sur boutton */
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    a {
+        color: white;
+        font-size: 1.2em;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background-color: #ffcc00;
+    }
+
+    a:hover {
+        color: #ffcc00;
+        font-size: 1.25em;
+    }
+
+    p {
+        font-family: 'Lucida Sans', sans-serif;
     }
 </style>
 
@@ -36,16 +114,17 @@
     <form action="formulaire.php" method="post">
         <label for="nom">Nom :</label>
         <input type="text" id="nom" name="nom" size="10" required>
-        <label for="nb_tours">Nombre de tours :</label>
-        <input type="number" id="nb_tours" name="nb_tours" required>
+        <!-- <label for="nb_tours">Nombre de tours :</label> -->
+        <!-- <input type="number" id="nb_tours" name="nb_tours" required> -->
         <button type="submit" name="submit">Envoyer</button>
     </form>
+
 
     <?php
     if (isset($_POST['submit'])) {
         // Récupération des données du formulaire
         $nom = htmlspecialchars($_POST['nom']);
-        $nb_tours = intval($_POST['nb_tours']);
+        $nb_tours = intval($_SESSION['tour']);           // $nb_tours = intval($_POST['nb_tours']); //pour récupérer valeur donné dans formulaire
 
         // Connexion à la base de données SQLite
         $db = new PDO('sqlite:base/uno.db');
@@ -78,7 +157,7 @@
 
     // Afficher les données sous forme de tableau
     echo "<table border='1'>";
-    echo "<tr><th>Nombre de tours</th><th>Nom</th><th>Date</th><th>Heure</th></tr>";
+    echo "<tr><th>Nombre de tours</th><th>Nom des gagnants</th><th>Date</th><th>Heure</th></tr>";
     foreach ($result as $row) {
         echo "<tr>";
         echo "<td>" . htmlspecialchars($row['nombre_tour']) . "</td>";
@@ -89,11 +168,14 @@
     }
     echo "</table>";
 
-
-    echo $tour;
-
+    echo "<br>";
+    // echo $_SESSION['tour'];  //pr afficher tour
 
     ?>
+
+    <a href="index.php?reset=oui"> Rejouer</a>
+
+
 </body>
 
 </html>
