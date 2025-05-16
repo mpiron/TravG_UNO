@@ -8,7 +8,7 @@
 body {
     font-family: Arial, Tahoma, sans-serif;
     color: #ffffff;
-    background-color: #999; 
+    background-color: #868686; 
     padding: 10px;
 }
 
@@ -94,14 +94,14 @@ a {
 
 
 /* épaisseur du tapis */
-.tapisJ1,
-.tapisJ2 {
+.tapisJ1, 
+.tapisJ2  {
     box-shadow: inset -10px -10px 25px rgba(0, 0, 0, 0.5),
     4px 4px 10px rgba(0, 0, 0, 0.3)
 }
 
 
-.actif{box-shadow: 0 0 50px rgb(255, 252, 104);}
+ .actif{box-shadow: 0 0 40px rgb(255, 246, 49);} 
 
 footer, nav { 
     text-align: right; 

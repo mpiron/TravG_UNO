@@ -14,7 +14,6 @@ include_once('variables.php');
     <title>Palmarès</title>
 </head>
 
-
 <style>
     table {
         width: 1000px;
@@ -68,7 +67,7 @@ include_once('variables.php');
 
     h1:hover {
         color: #ffcc00;
-        /* Change de couleur qd du survol */
+        /* Change de couleur qd on survol */
     }
 
     th:hover {
@@ -119,6 +118,7 @@ include_once('variables.php');
         <button type="submit" name="submit">Envoyer</button>
     </form>
 
+    <p>Ce tableau affiche les 8 meilleurs joueurs.</p>
 
     <?php
     if (isset($_POST['submit'])) {
@@ -152,7 +152,7 @@ include_once('variables.php');
     $result = $db->query("SELECT nombre_tour, nom, date, heure FROM vainqueurs 
                           ORDER BY nombre_tour ASC, date DESC, heure DESC LIMIT 8");
 
-    echo "<br>";
+
     echo "<br>";
 
     // Afficher les données sous forme de tableau
@@ -173,7 +173,7 @@ include_once('variables.php');
 
     ?>
 
-    <a href="index.php?reset=oui"> Rejouer</a>
+    <a href="index.php?reset=oui">Rejouer</a>
 
 
 </body>
